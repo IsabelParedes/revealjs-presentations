@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/dracula_alt.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+                    <textarea data-template>
+                        ## User Levels
+                        1. **Beginners.** Complete beginners who have never used ROS or programmed in any language.
+                        1. **Students.** University students with minimal programming experience.
+                        1. **ROS Users.** Students and researchers who actively use ROS for projects.
+                        1. **Roboticists.** Robotics software developers including contributors to the ROS ecosystem.
+                    </textarea>
+                </section>
+
+				<section data-markdown>
+                    <textarea data-template>
+                        ## Technical Levels
+                        - **L0:** A publisher and subscriber example on the console.
+                        - **L1:** Multiple nodes and topics with limited interaction.
+                        - **L2:** Graphical display with user interaction.
+                        - **L3:** Simulation of a robot (urdf).
+                        - **L4:** Manipulation of physical robot.
+                        - **L5:** Simulation of a robotics scenario.
+                    </textarea>
+                </section>
+
+                <section data-markdown>
+                    <textarea data-template>
+                        ## User Interface Levels
+                        1. **Non-interactive** $\rightarrow$ nodes run automatically as soon as the site is launched.
+                        1. **Minimal** $\rightarrow$ user can start/stop 1-2 nodes by pressing a button.
+                        1. **Basic** $\rightarrow$ user can select which nodes to run and can analyze the environment by requesting or viewing information.
+                        1. **Intermediate** $\rightarrow$ the graphical interface allows the user to accomplish primary tasks, such as displaying a robot.
+                        1. **Advanced** $\rightarrow$ a complete GUI where the user has full control of the environment, can start/stop nodes, modify params, interact with robots, etc.
+                    </textarea>
+                </section>
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+        <script src="../plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+                width: 1200,
+                // height: 700,
+                // margin: 0.5,
+                maxScale: 1.0,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+	</body>
+</html>
