@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>ROS2WASM</title>
+
+    <link rel="stylesheet" href="../dist/reset.css">
+    <link rel="stylesheet" href="../dist/reveal.css">
+    <link rel="stylesheet" href="../dist/theme/igmr.css">
+
+    <!-- 15 MINUTES -->
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../plugin/highlight/monokai.css">
+</head>
+<body>
+    <div class="reveal">
+    <div class="slides">
+        <section data-background="/presentations/thesis_src/images/superC.jpg" data-background-repeat="no repeat">
+            <div id="title">
+            <h1>Cross-Compiling ROS 2 Humble to WebAssembly for the Development of a Web Browser Supported Robotics Environment</h1>
+            <h3 id="author">Isabel Paredes</h3>
+            </div>
+        </section>
+
+        <section data-markdown>
+            ## Contents
+            2. Problem
+            3. Other solutions
+            4. Proposed solution
+                1. User levels
+                2. Interface levels
+                3. Technical levels
+            6. All things middleware
+                1. Why?
+                2. `rmw_wasm_cpp`
+                3. `wasm_cpp`
+                4. `wasm_js`
+            7. Demos
+                1. Publishers and subscribers
+                2. Services
+                3. Vernie
+            8. Conclusion
+            9. Outlook
+
+        </section>
+
+        <section data-markdown>
+            ## Motivation
+            What is the Problem
+        </section>
+
+        <section data-markdown>
+            ## Existing Solutions
+            (literature review)
+        </section>
+
+        <section data-markdown>
+            ## Proposed Solution
+            we should do it with WebAssembly instead
+        </section>
+
+        <section data-markdown>
+            ## WebAssembly
+            what and why
+        </section>
+
+
+        <section>
+        <section>
+            <!-- <textarea data-template>
+                ## User Levels
+                1. **Beginners.**
+                1. **Students.**
+                1. **ROS Users.** 
+                1. **Roboticists.**
+            </textarea> -->
+            <h2>Users</h2>
+            <div class="r-hstack">
+                <img height="30%" src="/presentations/thesis_src/images/beginner.svg">
+                <img height="30%" src="/presentations/thesis_src/images/student.svg">
+                <img height="30%" src="/presentations/thesis_src/images/rosUser.svg">
+                <img height="30%" src="/presentations/thesis_src/images/roboticist.svg">
+            </div>
+            <div class="levels">
+                <b>Beginner</b>
+                <b>Student</b>
+                <b>ROS User</b>
+                <b>Roboticist</b>
+            </div>
+        </section>
+
+        <section data-markdown>
+            <textarea data-template>
+                ## Technical Levels
+                - **L0:** A publisher and subscriber example on the console.
+                - **L1:** Multiple nodes and topics with limited interaction.
+                - **L2:** Graphical display with user interaction.
+                - **L3:** Simulation of a robot (urdf).
+                - **L4:** Manipulation of physical robot.
+                - **L5:** Simulation of a robotics scenario.
+            </textarea>
+        </section>
+
+        <section data-markdown>
+            <textarea data-template>
+                ## User Interface Levels
+                1. **Non-interactive** $\rightarrow$ nodes run automatically as soon as the site is launched.
+                1. **Minimal** $\rightarrow$ user can start/stop 1-2 nodes by pressing a button.
+                1. **Basic** $\rightarrow$ user can select which nodes to run and can analyze the environment by requesting or viewing information.
+                1. **Intermediate** $\rightarrow$ the graphical interface allows the user to accomplish primary tasks, such as displaying a robot.
+                1. **Advanced** $\rightarrow$ a complete GUI where the user has full control of the environment, can start/stop nodes, modify params, interact with robots, etc.
+            </textarea>
+        </section>
+        </section>
+
+
+        <section>
+            <h2>Middleware</h2>
+            What is it? and why is it needed?
+        </section>
+
+
+        <section>
+            <section>
+                <h2>Middlware Architecture</h2>
+                <p>Diagram with packages</p>
+            </section>
+            <section>
+                <h2>rmw_wasm_cpp</h2>
+            </section>
+            <section>
+                <h2>wasm_cpp</h2>
+            </section>
+            <section>
+                <h2>wasm_js</h2>
+            </section>
+        </section>
+
+
+        <section>
+            <section>
+                <h2>Demos</h2>
+            </section>
+            <section>
+                <h2>Publishers and Subscribers</h2>
+                <h3>Publisher</h3>
+
+            <div class="buttonBox">
+                <button onclick="startTalker()">START</button>
+                <button onclick="stopTalker()">STOP</button>
+                <button onclick="clearTalker()">CLEAR</button>
+            </div>
+
+            <textarea id="talkerOutput"  rows="8"></textarea>
+
+            <h3>Subscriber</h3>
+
+            <div class="buttonBox">
+                <button onclick="startListener()">START</button>
+                <button onclick="stopListener()">STOP</button>
+                <button onclick="clearListener()">CLEAR</button>
+            </div>
+                    
+            <textarea id="listenerOutput"  rows="8"></textarea>
+
+            </section>
+            <section>
+                <h2>Service Clients and Servers</h2>
+            </section>
+            <section>
+                <h2>ROS Client Libraries</h2>
+            </section>
+            <section>
+                <h2>LEGO-BOOST Vernie</h2>
+            </section>
+        </section>
+    </div>
+</div>
+
+<script src="../dist/reveal.js"></script>
+<script src="../plugin/notes/notes.js"></script>
+<script src="../plugin/markdown/markdown.js"></script>
+<script src="../plugin/highlight/highlight.js"></script>
+<script src="../plugin/math/math.js"></script>
+<script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+        hash: true,
+        width: 1400,
+        height: 700,
+        // margin: 0.5,
+        maxScale: 1.0,
+        slideNumber: false,
+        progress: true,
+
+        // Vertically
+        center: false,
+
+        disableLayout: true,
+
+        navigationMode: 'grid',
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+    });
+</script>
+
+<div id="footer">
+    <div>
+        <p>Cross-Compiling ROS 2 Humble to WebAssembly</p>
+        <p>Isabel Paredes</p>
+        <p>Institute of Mechanism Theory, Machine Dynamics and Robotics</p>
+        <p>RWTH Aachen University</p>
+    </div>
+
+    <div>
+        <img src="/presentations/thesis_src/images/logo.png" alt="IGMR Logo">
+    </div>
+
+</div>
+
+<!-- <script src="/presentations/thesis_src/rosWorkers/pubsub.js"></script> -->
+</body>
+</html>
