@@ -6,6 +6,11 @@
 
     <title>ROS2WASM</title>
 
+    <link href='https://fonts.googleapis.com/css?family=Bayon' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Konkhmer Sleokchher' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
+
     <link rel="stylesheet" href="../dist/reset.css">
     <link rel="stylesheet" href="../dist/reveal.css">
     <link rel="stylesheet" href="../dist/theme/igmr.css">
@@ -17,6 +22,7 @@
 <body>
     <div class="reveal">
     <div class="slides">
+
         <section data-background="/presentations/thesis_src/images/superC.jpg" data-background-repeat="no repeat">
             <div id="title">
             <h1>Cross-Compiling ROS 2 Humble to WebAssembly for the Development of a Web Browser Supported Robotics Environment</h1>
@@ -24,59 +30,103 @@
             </div>
         </section>
 
-        <section data-markdown>
-            ## Contents
-            2. Problem
-            3. Other solutions
-            4. Proposed solution
-                1. User levels
-                2. Interface levels
-                3. Technical levels
-            6. All things middleware
-                1. Why?
-                2. `rmw_wasm_cpp`
-                3. `wasm_cpp`
-                4. `wasm_js`
-            7. Demos
-                1. Publishers and subscribers
-                2. Services
-                3. Vernie
-            8. Conclusion
-            9. Outlook
-
+        <section>
+            <h2>Contents</h2>
+            <div class="two-col">
+            <div>
+                <p><span class="contentMarker">1</span><b>Motivation</b></p>
+                <p><span class="contentMarker">2</span><b>Proposed Solution</b></p>
+                <p><span class="contentMarker">3</span><b>Concept Architecture</b></p>
+            </div>
+            <div>
+                <p><span class="contentMarker">4</span><b>Demonstrations</b></p>
+                <p><span class="contentMarker">5</span><b>Conclusion</b></p>
+                <p><span class="contentMarker">6</span><b>Future Work</b></p>
+            </div>
+            </div>
         </section>
-
-        <section data-markdown>
-            ## Motivation
-            What is the Problem
-        </section>
-
-        <section data-markdown>
-            ## Existing Solutions
-            (literature review)
-        </section>
-
-        <section data-markdown>
-            ## Proposed Solution
-            we should do it with WebAssembly instead
-        </section>
-
-        <section data-markdown>
-            ## WebAssembly
-            what and why
-        </section>
-
 
         <section>
+            <h2>Motivation</h2>
+            <div class="two-col">
+            <div>
+                <p><b>ROS 2 Limitations:</b></p>
+                <ul>
+                    <li>Initial setup</li>
+                    <li>Ease of use</li>
+                    <li>Accessibility</li>
+                    <li>Reproducibility</li>
+                </ul>
+            </div>
+            <div>
+                <img src="/presentations/thesis_src/images/confusion.svg">
+            </div>
+            </div>
+        </section>
+
         <section>
-            <!-- <textarea data-template>
-                ## User Levels
-                1. **Beginners.**
-                1. **Students.**
-                1. **ROS Users.** 
-                1. **Roboticists.**
-            </textarea> -->
-            <h2>Users</h2>
+            <h2>Existing Solutions</h2>
+            <div class="deck">
+                <div class="card">
+                    <img src="/presentations/thesis_src/images/HumbleHawksbill.png">
+                    <b>ROS 2</b>
+                </div>
+                <div class="card">
+                    <img src="/presentations/thesis_src/images/robostack.png">
+                    <b>RoboStack</b>
+                </div>
+                <div class="card">
+                    <img src="/presentations/thesis_src/images/docker.png">
+                    <b>Docker</b>
+                </div>
+                <div class="card">
+                    <img src="/presentations/thesis_src/images/robotwebtools.jpg">
+                    <b>Robot Web Tools</b>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Inspiration</h2>
+            <div class="deck">
+                <div class="card">
+                    <img class="img-border" src="/presentations/thesis_src/images/roswasm_webgui.png">
+                    <b>roswasm_suite</b>
+                </div>
+                <div class="card">
+                    <img class="img-border" src="/presentations/thesis_src/images/rosonweb_gui.png">
+                    <b>ROS On Web</b>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section>
+            <h2>Proposed Solution</h2>
+            <div class="two-col">
+                <div>
+                    <p><b>Running ROS 2 on the Browser</b></p>
+                    <ul>
+                        <li>Hassle-free setup</li>
+                        <li>Zero background knowledge</li>
+                        <li>Fully open-source</li>
+                    </ul>
+    
+                    <div class="h-card">
+                        <img src="/presentations/thesis_src/images/wasm.svg">
+                        <b>WebAssembly</b>
+                    </div>
+
+                </div>
+                <div>
+                    <img src="/presentations/thesis_src/images/browser.svg">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Target Users</h2>
             <div class="r-hstack">
                 <img height="30%" src="/presentations/thesis_src/images/beginner.svg">
                 <img height="30%" src="/presentations/thesis_src/images/student.svg">
@@ -84,11 +134,31 @@
                 <img height="30%" src="/presentations/thesis_src/images/roboticist.svg">
             </div>
             <div class="levels">
-                <b>Beginner</b>
-                <b>Student</b>
-                <b>ROS User</b>
-                <b>Roboticist</b>
+                <p><span class="userMarker">U1</span><b>Beginner</b></p>
+                <p><span class="userMarker">U2</span><b>Student</b></p>
+                <p><span class="userMarker">U3</span><b>ROS User</b></p>
+                <p><span class="userMarker">U4</span><b>Roboticist</b></p>
             </div>
+        </section>
+
+        <section>
+            <h2>User Interface Levels</h2>
+            <div class="two-col">
+                <div>
+                    <p><span class="uiMarker">I1</span><b>Non-Interactive</b></p>
+                    <p><span class="uiMarker">I2</span><b>Minimal</b></p>
+                    <p><span class="uiMarker">I3</span><b>Basic</b></p>
+                    <p><span class="uiMarker">I4</span><b>Intermediate</b></p>
+                    <p><span class="uiMarker">I5</span><b>Advanced</b></p>
+                </div>
+                <div>
+                    <img src="/presentations/thesis_src/images/userInterface.svg">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Technical Complexity Levels</h2>
         </section>
 
         <section data-markdown>
@@ -103,79 +173,70 @@
             </textarea>
         </section>
 
-        <section data-markdown>
-            <textarea data-template>
-                ## User Interface Levels
-                1. **Non-interactive** $\rightarrow$ nodes run automatically as soon as the site is launched.
-                1. **Minimal** $\rightarrow$ user can start/stop 1-2 nodes by pressing a button.
-                1. **Basic** $\rightarrow$ user can select which nodes to run and can analyze the environment by requesting or viewing information.
-                1. **Intermediate** $\rightarrow$ the graphical interface allows the user to accomplish primary tasks, such as displaying a robot.
-                1. **Advanced** $\rightarrow$ a complete GUI where the user has full control of the environment, can start/stop nodes, modify params, interact with robots, etc.
-            </textarea>
-        </section>
-        </section>
-
-
+        
         <section>
             <h2>Middleware</h2>
-            What is it? and why is it needed?
+            <p>Diagram with packages</p>
+        </section>
+
+        <section>
+            <h2>rmw_wasm_cpp</h2>
+        </section>
+
+        <section>
+            <h2>wasm_cpp</h2>
+        </section>
+
+        <section>
+            <h2>wasm_js</h2>
         </section>
 
 
         <section>
-            <section>
-                <h2>Middlware Architecture</h2>
-                <p>Diagram with packages</p>
-            </section>
-            <section>
-                <h2>rmw_wasm_cpp</h2>
-            </section>
-            <section>
-                <h2>wasm_cpp</h2>
-            </section>
-            <section>
-                <h2>wasm_js</h2>
-            </section>
+            <h2>Demos</h2>
         </section>
-
-
         <section>
-            <section>
-                <h2>Demos</h2>
-            </section>
-            <section>
-                <h2>Publishers and Subscribers</h2>
-                <h3>Publisher</h3>
+            <h2>Publishers and Subscribers</h2>
+            <h3>Publisher</h3>
 
-            <div class="buttonBox">
-                <button onclick="startTalker()">START</button>
-                <button onclick="stopTalker()">STOP</button>
-                <button onclick="clearTalker()">CLEAR</button>
-            </div>
+        <div class="buttonBox">
+            <button onclick="startTalker()">START</button>
+            <button onclick="stopTalker()">STOP</button>
+            <button onclick="clearTalker()">CLEAR</button>
+        </div>
 
-            <textarea id="talkerOutput"  rows="8"></textarea>
+        <textarea id="talkerOutput"  rows="8"></textarea>
 
-            <h3>Subscriber</h3>
-
+        <h3>Subscriber</h3>
             <div class="buttonBox">
                 <button onclick="startListener()">START</button>
                 <button onclick="stopListener()">STOP</button>
                 <button onclick="clearListener()">CLEAR</button>
-            </div>
-                    
+            </div>      
             <textarea id="listenerOutput"  rows="8"></textarea>
-
-            </section>
-            <section>
-                <h2>Service Clients and Servers</h2>
-            </section>
-            <section>
-                <h2>ROS Client Libraries</h2>
-            </section>
-            <section>
-                <h2>LEGO-BOOST Vernie</h2>
-            </section>
         </section>
+
+        <section>
+            <h2>Service Clients and Servers</h2>
+        </section>
+
+        <section>
+            <h2>ROS Client Libraries</h2>
+        </section>
+
+        <section>
+            <h2>LEGO-BOOST Vernie</h2>
+            <p>Web Bluetooth API</p>
+        </section>
+
+        <section>
+            <h2>Summary</h2>
+        </section>
+
+        <section data-background="/presentations/thesis_src/images/eve_robot.jpg">
+            <h1>Thank You!</h1>
+        </section>
+
     </div>
 </div>
 
@@ -194,7 +255,7 @@
         height: 700,
         // margin: 0.5,
         maxScale: 1.0,
-        slideNumber: false,
+        slideNumber: 'c/t',
         progress: true,
 
         // Vertically
@@ -211,7 +272,8 @@
 
 <div id="footer">
     <div>
-        <p>Cross-Compiling ROS 2 Humble to WebAssembly</p>
+        <p>Cross-Compiling ROS 2 Humble to WebAssembly for the Development</p> 
+        <p>of a Web Browser Supported Robotics Environment</p>
         <p>Isabel Paredes</p>
         <p>Institute of Mechanism Theory, Machine Dynamics and Robotics</p>
         <p>RWTH Aachen University</p>
