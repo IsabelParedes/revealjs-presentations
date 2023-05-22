@@ -456,6 +456,11 @@
 .card {
   margin: 0 var(--side-margin);
   max-width: 50%;
+  white-space: nowrap;
+}
+
+.card p {
+  text-align: center;
 }
 
 .img-border {
@@ -485,6 +490,11 @@
 
 .two-col div {
   width: 50%;
+  text-align: left;
+}
+
+.two-col div ul {
+  margin-left: calc(var(--side-margin) * 3);
 }
 
 .contentMarker {
@@ -497,13 +507,34 @@
   font-size: larger;
 }
 
-.uiMarker {
+#longList {
+  font-size: 0.7em;
+}
+
+.uiMarker, .userMarker, .techMarker {
   font-family: var(--r-code-font);
   font-weight: bolder;
   color: white;
-  background: var(--col-accent-03);
   padding: 20px;
-  line-height: 2.5em;
   margin-right: 2vh;
+}
+
+.uiMarker {
+  background: var(--col-accent-03);
   margin-left: var(--side-margin);
+  line-height: 2.5em;
+
+}
+
+.userMarker {
+  background: var(--col-accent-01);
+}
+
+.techMarker {
+  background: var(--col-accent-05);
+  line-height: 2em;
+}
+
+#methodImg {
+  height: 65vh;
 }

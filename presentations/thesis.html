@@ -69,19 +69,19 @@
             <div class="deck">
                 <div class="card">
                     <img src="/presentations/thesis_src/images/HumbleHawksbill.png">
-                    <b>ROS 2</b>
+                    <p><b>ROS 2</b></p>
                 </div>
                 <div class="card">
                     <img src="/presentations/thesis_src/images/robostack.png">
-                    <b>RoboStack</b>
+                    <p id="humble"><b>RoboStack</b></p>
                 </div>
                 <div class="card">
                     <img src="/presentations/thesis_src/images/docker.png">
-                    <b>Docker</b>
+                    <p><b>Docker</b></p>
                 </div>
                 <div class="card">
                     <img src="/presentations/thesis_src/images/robotwebtools.jpg">
-                    <b>Robot Web Tools</b>
+                    <p><b>Robot Web Tools</b></p>
                 </div>
             </div>
         </section>
@@ -91,11 +91,11 @@
             <div class="deck">
                 <div class="card">
                     <img class="img-border" src="/presentations/thesis_src/images/roswasm_webgui.png">
-                    <b>roswasm_suite</b>
+                    <p><b>roswasm_suite</b></p>
                 </div>
                 <div class="card">
                     <img class="img-border" src="/presentations/thesis_src/images/rosonweb_gui.png">
-                    <b>ROS On Web</b>
+                    <p><b>ROS On Web</b></p>
                 </div>
 
             </div>
@@ -127,17 +127,23 @@
 
         <section>
             <h2>Target Users</h2>
-            <div class="r-hstack">
-                <img height="30%" src="/presentations/thesis_src/images/beginner.svg">
-                <img height="30%" src="/presentations/thesis_src/images/student.svg">
-                <img height="30%" src="/presentations/thesis_src/images/rosUser.svg">
-                <img height="30%" src="/presentations/thesis_src/images/roboticist.svg">
-            </div>
-            <div class="levels">
-                <p><span class="userMarker">U1</span><b>Beginner</b></p>
-                <p><span class="userMarker">U2</span><b>Student</b></p>
-                <p><span class="userMarker">U3</span><b>ROS User</b></p>
-                <p><span class="userMarker">U4</span><b>Roboticist</b></p>
+            <div class="deck">
+                <div class="card">
+                    <img height="30%" src="/presentations/thesis_src/images/beginner.svg">
+                    <p><span class="userMarker">U1</span><b>Beginner</b></p>
+                </div>
+                <div class="card">
+                    <img height="30%" src="/presentations/thesis_src/images/student.svg">
+                    <p><span class="userMarker">U2</span><b>Student</b></p>
+                </div>
+                <div class="card">
+                    <img height="30%" src="/presentations/thesis_src/images/rosUser.svg">
+                    <p><span class="userMarker">U3</span><b>ROS User</b></p>
+                </div>
+                <div class="card">
+                    <img height="30%" src="/presentations/thesis_src/images/roboticist.svg">
+                    <p><span class="userMarker">U4</span><b>Roboticist</b></p>
+                </div>
             </div>
         </section>
 
@@ -159,18 +165,27 @@
 
         <section>
             <h2>Technical Complexity Levels</h2>
+            <div class="two-col">
+                <div id="longList">
+                    <p><span class="techMarker">C1</span><b>Middleware replacement</b></p>
+                    <p><span class="techMarker">C2</span><b>Cross-compilation of 1 package</b></p>
+                    <p><span class="techMarker">C3</span><b>Publisher and subscriber</b></p>
+                    <p><span class="techMarker">C4</span><b>Multiple nodes</b></p>
+                    <p><span class="techMarker">C5</span><b>Robot manipulation</b></p>
+                    <p><span class="techMarker">C6</span><b>ROS client libraries in JupyterLite</b></p>
+                    <p><span class="techMarker">C7</span><b>Robot visualization</b></p>
+                    <p><span class="techMarker">C8</span><b>Simulation</b></p>
+                    <p><span class="techMarker">C9</span><b>Development workspace</b></p>
+                </div>
+                <div>
+                    <img src="/presentations/thesis_src/images/complexity.svg">
+                </div>
+            </div>
         </section>
 
-        <section data-markdown>
-            <textarea data-template>
-                ## Technical Levels
-                - **L0:** A publisher and subscriber example on the console.
-                - **L1:** Multiple nodes and topics with limited interaction.
-                - **L2:** Graphical display with user interaction.
-                - **L3:** Simulation of a robot (urdf).
-                - **L4:** Manipulation of physical robot.
-                - **L5:** Simulation of a robotics scenario.
-            </textarea>
+        <section>
+            <h2>Methodology</h2>
+            <img src="/presentations/thesis_src/images/code.svg" id="methodImg">
         </section>
 
         
@@ -179,22 +194,11 @@
             <p>Diagram with packages</p>
         </section>
 
-        <section>
-            <h2>rmw_wasm_cpp</h2>
-        </section>
-
-        <section>
-            <h2>wasm_cpp</h2>
-        </section>
-
-        <section>
-            <h2>wasm_js</h2>
-        </section>
-
 
         <section>
             <h2>Demos</h2>
         </section>
+
         <section>
             <h2>Publishers and Subscribers</h2>
             <h3>Publisher</h3>
@@ -230,7 +234,41 @@
         </section>
 
         <section>
-            <h2>Summary</h2>
+            <h2>Conclusion</h2>
+            <div class="two-col">
+                <ul>
+                    <li>No installation</li>
+                    <li>Easy to use</li>
+                    <li>Publicly accessible</li>
+                    <li>Reproducible</li>
+                    <li>OS agnostic</li>
+                    <li>No rosbridge required</li>
+                </ul>
+            </div>
+            <div>
+                <!-- TODO: -->
+            </div>
+        </section>
+
+        <section>
+            <h2>Future Work</h2>
+            <div class="two-col">
+                <div>
+                <p><b>Client libraries:</b></p>
+                <ul>
+                    <li>rclpy</li>
+                </ul>
+                <p><b>User interface:</b></p>
+                <ul>
+                    <li>JupyterLite</li>
+                    <li>Zethus</li>
+                </ul>
+                <p><b>Middleware:</b></p>
+                <ul>
+                    <li>Action services</li>
+                </ul>
+                </div>
+            </div>
         </section>
 
         <section data-background="/presentations/thesis_src/images/eve_robot.jpg">
