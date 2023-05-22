@@ -490,6 +490,9 @@
 
 .two-col div {
   width: 50%;
+}
+
+.text-col {
   text-align: left;
 }
 
@@ -537,4 +540,8 @@
 
 #methodImg {
   height: 65vh;
+}
+
+#qr-code {
+  max-height: 30vh;
 }
