@@ -13,7 +13,7 @@
   *********************************************/
  :root {
     --col-background: #F4F4F9;
-    --col-foreground: #0F0E0E;
+    --col-foreground: #263238;
     --col-dark-blue:  #00549f;
     --col-light-blue: #7AA4CC;
     --col-accent-01: #cc071e;
@@ -539,6 +539,10 @@
 }
 
 #methodImg {
+  height: 65vh;
+}
+
+#packImg {
   height: 65vh;
 }
 
