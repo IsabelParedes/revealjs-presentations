@@ -191,6 +191,14 @@
 
         <section>
             <h2>ROS Middleware</h2>
+            <div class="two-col">
+                <div class="text-col">
+                    <p><b>Data Distribution Service</b></p>
+                </div>
+                <div>
+                    <img id="ddsImg" src="./thesis_src/images/dds.svg">
+                </div>
+            </div>
         </section>
 
         
@@ -205,9 +213,11 @@
             <div class="two-col">
                 <div>
                     <img src="./thesis_src/images/demo_qr.png" id="qr-code">
+                    <p><a href="https://ihuicatl.github.io/reveal.js/presentations/thesis.html#/11">https://ihuicatl.github.io/reveal.js/presentations/thesis.html#/11</a></p>
                 </div>
-                <div class="text-col">
-                    <a href="https://ihuicatl.github.io/reveal.js/presentations/thesis.html#/11">https://ihuicatl.github.io/reveal.js/presentations/thesis.html#/11</a>
+                <div>
+                    <!-- <img src="./thesis_src/images/robot-arm-animated.svg"> -->
+                    <object id="robotArm" type="image/svg+xml" data="./thesis_src/images/robot-arm-animated.svg"></object>
                 </div>
             </div>
         </section>
@@ -250,7 +260,7 @@
             <h2>Conclusion</h2>
             <div class="two-col">
                 <div class="text-col">
-                <ul>
+                <ul class="pros">
                     <li>No installation</li>
                     <li>Easy to use</li>
                     <li>Publicly accessible</li>
@@ -258,10 +268,38 @@
                     <li>OS agnostic</li>
                     <li>No rosbridge required</li>
                 </ul>
+                <br><br>
+                <ul class="cons">
+                    <li>Maintenance</li>
+                    <li>Missing features</li>
+                </ul>
                 </div>
-            </div>
-            <div>
-                <!-- TODO: -->
+                <div class="text-col">
+                <p>
+                    <span class="sMarker user">U1</span>
+                    <span class="sMarker user">U2</span>
+                    <span class="sMarker">U3</span>
+                    <span class="sMarker">U4</span>
+                </p>
+                <p>
+                    <span class="sMarker ui">I1</span>
+                    <span class="sMarker ui">I2</span>
+                    <span class="sMarker ui">I3</span>
+                    <span class="sMarker ui">I4</span>
+                    <span class="sMarker">I5</span>
+                </p>
+                <p>
+                    <span class="sMarker tech">C1</span>
+                    <span class="sMarker tech">C2</span>
+                    <span class="sMarker tech">C3</span>
+                    <span class="sMarker tech">C4</span>
+                    <span class="sMarker tech">C5</span>
+                    <span class="sMarker">C6</span>
+                    <span class="sMarker">C7</span>
+                    <span class="sMarker">C8</span>
+                    <span class="sMarker">C9</span>
+                </p>
+                </div>
             </div>
         </section>
 
@@ -271,17 +309,25 @@
                 <div class="text-col">
                 <p><b>Client libraries:</b></p>
                 <ul>
-                    <li>rclpy</li>
+                    <li><code>rclpy</code></li>
                 </ul>
                 <p><b>User interface:</b></p>
                 <ul>
                     <li>JupyterLite</li>
-                    <li>Zethus</li>
+                    <li>Amphion and Zethus</li>
                 </ul>
                 <p><b>Middleware:</b></p>
                 <ul>
                     <li>Action services</li>
                 </ul>
+                </div>
+                <div id="jLite">
+                    <iframe 
+                        height="100%"
+                        width="100%"
+                        src="https://jupyterlab-urdf.readthedocs.io/en/latest/lite/lab/index.html" 
+                        title="JupyterLite">
+                    </iframe>
                 </div>
             </div>
         </section>

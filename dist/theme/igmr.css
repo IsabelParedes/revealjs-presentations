@@ -414,7 +414,7 @@
 .reveal .slide-number {
     left: var(--side-margin);
     /* width: 3em; */
-    background-color: rgba(0,0,0,0);
+    background: rgba(0, 0, 0, 0);
     color: var(--col-dark-blue);
 }
 
@@ -522,6 +522,27 @@
   margin-right: 2vh;
 }
 
+.sMarker {
+  font-family: var(--r-code-font);
+  font-weight: bolder;
+  color: white;
+  background: var(--col-light-gray);
+  padding: 10px;
+  line-height: 3em;
+}
+
+.sMarker.user {
+  background: var(--col-accent-01);
+}
+
+.sMarker.ui {
+  background: var(--col-accent-03);
+}
+
+.sMarker.tech {
+  background: var(--col-accent-05);
+}
+
 .uiMarker {
   background: var(--col-accent-03);
   margin-left: var(--side-margin);
@@ -548,4 +569,30 @@
 
 #qr-code {
   max-height: 30vh;
+}
+
+.pros, .cons {
+  list-style: none !important;
+}
+
+.pros li:before {
+  content: '✓  ';
+  color: var(--col-accent-04);
+}
+
+.cons li:before {
+  content: '𐄂  ';
+  color: var(--col-accent-01);
+}
+
+#robotArm {
+  max-height: 65vh;
+}
+
+#ddsImg {
+  height: 65vh;
+}
+
+#jLite {
+  height: 65vh;
 }
