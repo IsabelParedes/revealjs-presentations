@@ -34,6 +34,8 @@ class MessageStack {
 const topicMap = {};
 let talker = null;
 let listener = null;
+let server = null;
+let client = null;
 
 const publisherRoles = ["publisher", "service_server", "action_server"];
 const subscriberRoles = ["subscriber", "service_client", "action_client"];
@@ -66,7 +68,7 @@ let onMessageFromWorker = function( event ) {
             
             break;
 
-            case "deregister":
+        case "deregister":
 
             let gidIndex = "";
             if (publisherRoles.includes(event.data.role)) {
@@ -96,20 +98,40 @@ let onMessageFromWorker = function( event ) {
             break;
 
         case "publish":
-            case "publish":
             // Remove new lines to prevent truncation
             let pubMsg = event.data.message.replaceAll(/\n/g, ", ");
             topicMap[event.data.topic].messages.push(pubMsg);
             break;
 
         case "retrieve":
-    
             let msgPopped = topicMap[event.data.topic].messages.pop();
             
             if (msgPopped !== null) {
-                // TODO: broadcast to all subscribers
+                // Broadcast to all subscribers
                 if (listener !== null) { 
                     listener.postMessage({
+                            command: "broadcast",
+                            topic: event.data.topic,
+                            message: msgPopped
+                        }); 
+                };
+                if (talker !== null) { 
+                    talker.postMessage({
+                            command: "broadcast",
+                            topic: event.data.topic,
+                            message: msgPopped
+                        }); 
+                };
+                if (client !== null) { 
+                    client.postMessage({
+                            command: "broadcast",
+                            topic: event.data.topic,
+                            message: msgPopped
+                        }); 
+                };
+                if (server !== null) { 
+                    server.postMessage({
+                            command: "broadcast",
                             topic: event.data.topic,
                             message: msgPopped
                         }); 
@@ -122,22 +144,22 @@ let onMessageFromWorker = function( event ) {
             let rawMessage = event.data.message;
             // Remove end chars
             let msg = rawMessage.substr(4, rawMessage.length - 8);
-            let talkerOutput = document.getElementById(event.data.role + "Output");
-            talkerOutput.scrollTop = talkerOutput.scrollHeight;
-            talkerOutput.innerHTML += msg + "\n";
+            let boxOutput = document.getElementById(event.data.role + "Output");
+            boxOutput.scrollTop = boxOutput.scrollHeight;
+            boxOutput.innerHTML += msg + "\n";
             break;
     }
 }
 
-
-// PUBLISHER 
+////////////////////////////////////////////////////////////////////////////////
+// PUBLISHER  //////////////////////////////////////////////////////////////////
 
 function startTalker() {
 
     document.getElementById("talkerOutput").innerHTML += "Publisher initializing.\n";
 
     if (talker === null) {
-        talker = new Worker("/presentations/thesis_src/rosWorkers/talker.js");
+        talker = new Worker("./thesis_src/rosWorkers//talker.js");
     }
 
     talker.onmessage = onMessageFromWorker;
@@ -157,15 +179,15 @@ function clearTalker() {
     document.getElementById("talkerOutput").innerHTML = "";
 }
 
-
-// SUBSCRIBER
+////////////////////////////////////////////////////////////////////////////////
+// SUBSCRIBER //////////////////////////////////////////////////////////////////
 
 function startListener() {
 
     document.getElementById("listenerOutput").innerHTML += "Subscriber initializing.\n";
 
     if (listener === null) {
-        listener = new Worker("/presentations/thesis_src/rosWorkers/listener.js");
+        listener = new Worker("./thesis_src/rosWorkers//listener.js");
     }
 
     listener.onmessage = onMessageFromWorker;
@@ -181,4 +203,75 @@ function stopListener() {
 
 function clearListener() {
     document.getElementById("listenerOutput").innerHTML = "";
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// SERVER //////////////////////////////////////////////////////////////////////
+
+function startServer() {
+
+    document.getElementById("serverOutput").innerHTML += "Server initializing.\n";
+
+    if (server === null) {
+        server = new Worker("./thesis_src/rosWorkers//server.js");
+    }
+
+    server.onmessage = onMessageFromWorker;
+}
+
+function stopServer() {
+    server.terminate();
+    server = null;
+
+    // Terminate client to reestablish connection at restart
+    if (client !== null) { stopClient(); }
+
+    document.getElementById("serverOutput").innerHTML += "Server terminated.\n\n";
+}
+
+function clearServer() {
+    document.getElementById("serverOutput").innerHTML = "";
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// CLIENT //////////////////////////////////////////////////////////////////////
+
+function startClient() {
+
+    document.getElementById("clientOutput").innerHTML += "Client initializing.\n";
+
+    if (client === null) {
+        client = new Worker("./thesis_src/rosWorkers//client.js");
+    }
+
+    client.onmessage = onMessageFromWorker;
+}
+
+function stopClient() {
+    if (client !== null) {
+        client.terminate();
+        client = null;
+    }
+    document.getElementById("clientOutput").innerHTML += "Client terminated.\n\n";
+}
+
+function clearClient() {
+    document.getElementById("clientOutput").innerHTML = "";
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// TOPICS //////////////////////////////////////////////////////////////////////
+
+function refreshTopics() {
+    topicBox = document.getElementById("topicOutput");
+    topicBox.innerHTML = "";
+    let topics = Object.getOwnPropertyNames(topicMap);
+    if (topics.length == 0) {
+        topicBox.innerHTML = "No topics."
+    } else {
+        for (let t = 0; t < topics.length; t++) {
+            topicBox.innerHTML += topics[t] + "\n";
+        };
+        topicBox.setAttribute("rows", topics.length);
+    }
 }

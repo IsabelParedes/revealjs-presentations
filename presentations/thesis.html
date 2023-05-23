@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="../plugin/highlight/monokai.css">
 </head>
 <body>
+    <script src="./thesis_src/rosWorkers/rosMain.js"></script>
+
     <div class="reveal">
     <div class="slides">
 
@@ -193,7 +195,13 @@
             <h2>ROS Middleware</h2>
             <div class="two-col">
                 <div class="text-col">
-                    <p><b>Data Distribution Service</b></p>
+                    <p><b>Data Distribution Service for Real-Time Systems (DDS)</b></p>
+                    <ul>
+                        <li>eProsima Fast DDS</li>
+                        <li>Eclipse Cyclone DDS</li>
+                        <li>RTI Connext DDS</li>
+                        <li>GurumDDS</li>
+                    </ul>
                 </div>
                 <div>
                     <img id="ddsImg" src="./thesis_src/images/dds.svg">
@@ -224,17 +232,16 @@
 
         <section>
             <h2>ROS Topics</h2>
+
             <h3>Publisher</h3>
+            <div class="buttonBox">
+                <button onclick="startTalker()">START</button>
+                <button onclick="stopTalker()">STOP</button>
+                <button onclick="clearTalker()">CLEAR</button>
+            </div>
+            <textarea id="talkerOutput"  rows="8"></textarea>
 
-        <div class="buttonBox">
-            <button onclick="startTalker()">START</button>
-            <button onclick="stopTalker()">STOP</button>
-            <button onclick="clearTalker()">CLEAR</button>
-        </div>
-
-        <textarea id="talkerOutput"  rows="8"></textarea>
-
-        <h3>Subscriber</h3>
+            <h3>Subscriber</h3>
             <div class="buttonBox">
                 <button onclick="startListener()">START</button>
                 <button onclick="stopListener()">STOP</button>
@@ -245,6 +252,21 @@
 
         <section>
             <h2>ROS Services</h2>
+            <h3>Server</h3>
+            <div class="buttonBox">
+                <button onclick="startServer()">START</button>
+                <button onclick="stopServer()">STOP</button>
+                <button onclick="clearServer()">CLEAR</button>
+            </div>
+            <textarea id="serverOutput"  rows="8"></textarea>
+
+            <h3>Client</h3>
+            <div class="buttonBox">
+                <button onclick="startClient()">START</button>
+                <button onclick="stopClient()">STOP</button>
+                <button onclick="clearClient()">CLEAR</button>
+            </div>      
+            <textarea id="clientOutput"  rows="8"></textarea>
         </section>
 
         <section>

@@ -28,7 +28,7 @@
 
 
     --r-main-font: "Roboto", Source Sans Pro, Helvetica, sans-serif;
-    --r-main-font-size: 58px;
+    --r-main-font-size: 3.5vh;
     --r-block-margin: 20px;
     --r-heading-margin: 0 0 20px 0;
     --r-heading-font: "Konkhmer Sleokchher", Source Sans Pro, Helvetica, sans-serif;
@@ -91,7 +91,6 @@
  .reveal h5,
  .reveal h6 {
    margin: var(--r-heading-margin);
-   color: var(--r-heading-color);
    font-family: var(--r-heading-font);
    font-weight: var(--r-heading-font-weight);
    line-height: var(--r-heading-line-height);
@@ -104,18 +103,22 @@
  
  .reveal h1 {
    font-size: var(--r-heading1-size);
+   color: var(--r-heading-color);
  }
  
  .reveal h2 {
    font-size: var(--r-heading2-size);
    border-bottom: 3px solid var(--col-light-gray);
    margin: var(--side-margin);
+   color: var(--r-heading-color);
    /* border-radius: 10px; */
    /* margin-bottom: 0; */
  }
  
  .reveal h3 {
    font-size: var(--r-heading3-size);
+   margin: var(--side-margin);
+   margin-bottom: 0;
  }
  
  .reveal h4 {
