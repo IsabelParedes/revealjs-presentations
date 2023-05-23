@@ -29,6 +29,8 @@
 
     --r-main-font: "Roboto", Source Sans Pro, Helvetica, sans-serif;
     --r-main-font-size: 3.5vh;
+    --r-main-font-small: 1.5vh;
+    --r-main-font-size-code: 2vh;
     --r-block-margin: 20px;
     --r-heading-margin: 0 0 20px 0;
     --r-heading-font: "Konkhmer Sleokchher", Source Sans Pro, Helvetica, sans-serif;
@@ -405,6 +407,7 @@
     /* background-color: var(--col-background); */
     padding-top: 1em;
     font-family: var(--r-main-font);
+    font-size: var(--r-main-font-small);
 }
 
 #footer img {
@@ -417,8 +420,10 @@
 .reveal .slide-number {
     left: var(--side-margin);
     /* width: 3em; */
+    font-size: var(--r-main-font-small);
     background: rgba(0, 0, 0, 0);
     color: var(--col-dark-blue);
+    padding-left: 0;
 }
 
 #title {
@@ -459,7 +464,12 @@
 .card {
   margin: 0 var(--side-margin);
   max-width: 50%;
+  max-height: 65vh;
   white-space: nowrap;
+}
+
+.card img {
+  max-height: 55vh;
 }
 
 .card p {
@@ -503,18 +513,28 @@
   margin-left: calc(var(--side-margin) * 3);
 }
 
+.two-col div img {
+  max-height: 70vh;
+}
+
 .contentMarker {
   background: var(--col-light-blue);
   color: white;
   font-weight: bolder;
-  line-height: 2em;
+  line-height: 2.2em;
   padding: 0.2em 0.5em;
-  margin: 20px;
+  margin: 1vh;
   font-size: larger;
 }
 
 #longList {
-  font-size: 0.7em;
+  font-size: 0.6em;
+  line-height: 3em !important;
+  margin-left: var(--side-margin);
+}
+
+#longList p {
+  margin-top: 1.5em;
 }
 
 .uiMarker, .userMarker, .techMarker {
@@ -598,4 +618,29 @@
 
 #jLite {
   height: 65vh;
+  overflow: hidden;
+  text-align: start;
+  align-items: top;
+  display: flex;
+}
+
+#frame {
+  transform: scale(1.5);
+  transform-origin: top left;
+  height: 40vh;
+  width: 50vh;
+  background: var(--col-foreground);
+  margin: 1em 0 0 0;
+  padding-left: 0;
+}
+
+textarea {
+  font-size: var(--r-main-font-size-code);
+  font-family: var(--r-code-font);
+  color: var(--col-background);
+  background: var(--col-foreground);
+  width: 80%;
+  border: none;
+  border-radius: 0.2em;
+  padding: 0.5em;
 }
