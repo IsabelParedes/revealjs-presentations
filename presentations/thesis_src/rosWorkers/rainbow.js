@@ -2075,6 +2075,7 @@ var ASM_CONSTS = {
             // NOTE: Added for better messages
             self.postMessage({
               command: "console",
+              role: "vernie",
               message: UTF8ArrayToString(tty.output, 0)
             });
             tty.output = [];

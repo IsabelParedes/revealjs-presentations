@@ -36,6 +36,7 @@ let talker = null;
 let listener = null;
 let server = null;
 let client = null;
+let vernieLED = null;
 let rclPublisher = new Worker("./thesis_src/rosWorkers/rcl_publisher.js");
 let rclSubscriber = new Worker("./thesis_src/rosWorkers/rcl_subscriber.js");
 
@@ -103,6 +104,12 @@ let onMessageFromWorker = function( event ) {
             // Remove new lines to prevent truncation
             let pubMsg = event.data.message.replaceAll(/\n/g, ", ");
             topicMap[event.data.topic].messages.push(pubMsg);
+            if (event.data.topic === "/led_color") {
+                let ledColor = event.data.message.substr("data: ".length);
+                // Send message to Vernie
+                colorLed(ledColor);
+                document.getElementById("ledCircle").setAttribute("fill", ledColor);
+            }
             break;
 
         case "retrieve":
@@ -355,4 +362,39 @@ function refreshTopics() {
         };
         topicBox.setAttribute("rows", topics.length);
     }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// VERNIE
+
+function happyVernie() {
+    document.getElementById("vernie-head").setAttribute("src", "./thesis_src/images/vernie_happy.svg");
+}
+
+function angryVernie() {
+    document.getElementById("vernie-head").setAttribute("src", "./thesis_src/images/vernie_angry.svg")
+}
+
+
+function startVernieLED() {
+
+    document.getElementById("vernieOutput").innerHTML += "Publisher initializing.\n";
+
+    if (vernieLED === null) {
+        vernieLED = new Worker("./thesis_src/rosWorkers/rainbow.js");
+    }
+
+    vernieLED.onmessage = onMessageFromWorker;
+}
+
+function stopVernieLED() {
+    if (vernieLED !== null) {
+        vernieLED.terminate();
+        vernieLED = null;
+    }
+    document.getElementById("vernieOutput").innerHTML += "Publisher terminated.\n\n";
+}
+
+function clearVernieLED() {
+    document.getElementById("vernieOutput").innerHTML = "";
 }

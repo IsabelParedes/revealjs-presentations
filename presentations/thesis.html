@@ -23,6 +23,7 @@
 </head>
 <body>
     <script src="./thesis_src/rosWorkers/rosMain.js"></script>
+    <script src="./thesis_src/dist/bundle.js"></script>
 
     <div class="reveal">
     <div class="slides">
@@ -466,6 +467,34 @@
         </section>
 
         <section>
+            <h2>LEGO-BOOST Vernie</h2>
+            <div class="slideContent">
+                <div id="vernieCol">
+                <div id="vernieConnect">
+                    <button onclick="connect(); happyVernie();">CONNECT</button>
+                    <img id="vernie-head" 
+                        src="./thesis_src/images/vernie_angry.svg"
+                        alt="Vernie's head">
+                    <button onclick="disconnect(); angryVernie();">DISCONNECT</button>
+                </div>
+    
+                <h3>Publish LED colors</h3>
+                <div class="demoBox">
+                <div class="buttonBox" id="vernieButtons">
+                    <svg width = "1em" height="1em">
+                        <circle id="ledCircle" cx="0.5em" cy="0.5em" r="0.5em" fill="black"/>
+                    </svg>
+                    <button onclick="startVernieLED()">START</button>
+                    <button onclick="stopVernieLED()">STOP</button>
+                    <button onclick="clearVernieLED()">CLEAR</button>
+                </div>    
+                <textarea id="vernieOutput"  rows="8"></textarea>    
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section>
             <h2>ROS Client Libraries: <code>rclcpp</code></h2>
             <div class="slideContent">
                 <div class="demo-col">
@@ -522,10 +551,6 @@
             </div>
         </section>
 
-        <section>
-            <h2>LEGO-BOOST Vernie</h2>
-            <p>Web Bluetooth API</p>
-        </section>
 
         <section>
             <h2>Conclusion</h2>

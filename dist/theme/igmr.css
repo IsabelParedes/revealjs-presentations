@@ -724,7 +724,8 @@ textarea {
 }
 
 .buttonBox button, 
-.buttonRcl button {
+.buttonRcl button,
+#vernieConnect button {
   margin: 0.5em 1em;
   font-weight: 600;
   font-size: 0.6em;
@@ -734,6 +735,10 @@ textarea {
   border: none;
   min-width: fit-content;
   background: var(--col-button-gray);
+}
+
+#vernieConnect button {
+  padding: 0.2em;
 }
 
 .outputBox, .outputRcl {
@@ -821,4 +826,23 @@ textarea {
   box-sizing: border-box;
   font-size: 3.5em;
   position: absolute;
+}
+
+#vernieCol {
+  width: 100%;
+}
+
+#vernieButtons svg {
+  align-self: center;
+}
+
+#vernieConnect {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+}
+
+#vernieConnect img {
+  height: 80%;
 }
