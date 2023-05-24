@@ -24,8 +24,8 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="2.65417"
-     inkscape:cx="354.91321"
-     inkscape:cy="230.58055"
+     inkscape:cx="355.10159"
+     inkscape:cy="230.58056"
      inkscape:window-width="2822"
      inkscape:window-height="1718"
      inkscape:window-x="58"
@@ -34,14 +34,15 @@
      inkscape:current-layer="svg576" />
   <g
      id="freepik--background-simple--inject-246"
-     transform="matrix(-1,0,0,1,717.7227,-51.85456)">
+     transform="matrix(-1,0,0,1,717.7227,-51.85456)"
+     style="fill:#fce5b3;fill-opacity:1">
     <path
        d="m 709.9,297.25 c 7.47,-49.91 1,-100.42 -30.12,-143.52 C 644.11,104.4 587.61,69.54 527.55,59.65 A 207.71,207.71 0 0 0 495.18,56.86 235.06,235.06 0 0 0 419,69 c -41.45,14 -77.08,38.39 -109.3,67.5 -14.31,12.92 -28.28,29.5 -47.23,35.5 -19.67,6.28 -40.83,-1.8 -60,-6.74 C 166.54,156 113.8,136 78,155 31,180 17,235 35,278 c 18,43 73,46 79,79 6,33 35,82 98,77 63,-5 87,-59 127,-43 14.07,5.63 25.12,16 37.09,24.91 16.67,12.44 34.75,20.91 55.27,24.81 29.34,5.58 61.38,2.63 91,1.21 34,-1.64 70.58,-0.39 103.59,-12.27 35.44,-12.77 57.82,-40.75 69.83,-75.83 a 322.63,322.63 0 0 0 14.12,-56.58 z"
-       style="fill:#0098a1"
+       style="fill:#fce5b3;fill-opacity:1"
        id="path2" />
     <path
        d="m 709.9,297.25 c 7.47,-49.91 1,-100.42 -30.12,-143.52 C 644.11,104.4 587.61,69.54 527.55,59.65 A 207.71,207.71 0 0 0 495.18,56.86 235.06,235.06 0 0 0 419,69 c -41.45,14 -77.08,38.39 -109.3,67.5 -14.31,12.92 -28.28,29.5 -47.23,35.5 -19.67,6.28 -40.83,-1.8 -60,-6.74 C 166.54,156 113.8,136 78,155 31,180 17,235 35,278 c 18,43 73,46 79,79 6,33 35,82 98,77 63,-5 87,-59 127,-43 14.07,5.63 25.12,16 37.09,24.91 16.67,12.44 34.75,20.91 55.27,24.81 29.34,5.58 61.38,2.63 91,1.21 34,-1.64 70.58,-0.39 103.59,-12.27 35.44,-12.77 57.82,-40.75 69.83,-75.83 a 322.63,322.63 0 0 0 14.12,-56.58 z"
-       style="opacity:0.7;fill:#ffffff"
+       style="opacity:0.7;fill:#fce5b3;fill-opacity:1"
        id="path4" />
   </g>
   <g
@@ -208,7 +209,7 @@
        id="line53" />
     <polygon
        points="146.29,237.26 171.72,237.26 178.66,244.03 178.66,280.42 146.29,280.42 "
-       style="fill:#0098a1;stroke:#263238;stroke-linecap:round;stroke-linejoin:round"
+       style="fill:#f6a800;stroke:#263238;stroke-linecap:round;stroke-linejoin:round;fill-opacity:1"
        id="polygon55" />
     <polygon
        points="172.59,243.33 172.59,245.09 178.66,244.04 "
@@ -255,7 +256,7 @@
        id="line69" />
     <polygon
        points="105.38,110.01 136.22,110.01 144.63,118.22 144.63,162.34 105.38,162.34 "
-       style="fill:#0098a1;stroke:#263238;stroke-linecap:round;stroke-linejoin:round"
+       style="fill:#f6a800;stroke:#263238;stroke-linecap:round;stroke-linejoin:round;fill-opacity:1"
        id="polygon71" />
     <polygon
        points="137.27,117.37 137.27,119.51 144.63,118.23 "
@@ -302,7 +303,7 @@
        id="line85" />
     <polygon
        points="189.44,133.94 220.28,133.94 228.69,142.16 228.69,186.28 189.44,186.28 "
-       style="fill:#0098a1;stroke:#263238;stroke-linecap:round;stroke-linejoin:round"
+       style="fill:#f6a800;stroke:#263238;stroke-linecap:round;stroke-linejoin:round;fill-opacity:1"
        id="polygon87" />
     <polygon
        points="221.34,141.3 221.34,143.45 228.69,142.17 "
@@ -1219,7 +1220,7 @@
      cx="-270.88269"
      cy="138.62544"
      r="5.1399999"
-     style="fill:#0098a1"
+     style="fill:#f6a800;fill-opacity:1"
      id="circle406"
      transform="scale(-1,1)" />
   <path
@@ -1291,7 +1292,7 @@
      width="55.639999"
      height="30.860001"
      rx="5.0599999"
-     style="fill:#0098a1;stroke:#263238;stroke-linecap:round;stroke-linejoin:round"
+     style="fill:#f6a800;stroke:#263238;stroke-linecap:round;stroke-linejoin:round;fill-opacity:1"
      id="rect426"
      ry="5.0599999"
      transform="scale(-1,1)" />
@@ -1306,7 +1307,7 @@
      cx="-298.7627"
      cy="245.14545"
      r="2.5"
-     style="fill:#0098a1"
+     style="fill:#f6a800;fill-opacity:1"
      id="circle458"
      transform="scale(-1,1)" />
   <circle

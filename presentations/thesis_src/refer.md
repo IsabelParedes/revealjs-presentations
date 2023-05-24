@@ -20,4 +20,5 @@ Move QR code to the end of demos
 
 Move demos after conclusion but before future work
 
-Talk about the workflow or write some documentation and point people there
+- [x] Talk about the workflow or write some documentation and point people there
+

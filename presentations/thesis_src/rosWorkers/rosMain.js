@@ -36,6 +36,8 @@ let talker = null;
 let listener = null;
 let server = null;
 let client = null;
+let rclPublisher = new Worker("./thesis_src/rosWorkers/rcl_publisher.js");
+let rclSubscriber = new Worker("./thesis_src/rosWorkers/rcl_subscriber.js");
 
 const publisherRoles = ["publisher", "service_server", "action_server"];
 const subscriberRoles = ["subscriber", "service_client", "action_client"];
@@ -110,31 +112,38 @@ let onMessageFromWorker = function( event ) {
                 // Broadcast to all subscribers
                 if (listener !== null) { 
                     listener.postMessage({
-                            command: "broadcast",
-                            topic: event.data.topic,
-                            message: msgPopped
-                        }); 
+                        command: "broadcast",
+                        topic: event.data.topic,
+                        message: msgPopped
+                    }); 
                 };
                 if (talker !== null) { 
                     talker.postMessage({
-                            command: "broadcast",
-                            topic: event.data.topic,
-                            message: msgPopped
-                        }); 
+                        command: "broadcast",
+                        topic: event.data.topic,
+                        message: msgPopped
+                    }); 
                 };
                 if (client !== null) { 
                     client.postMessage({
-                            command: "broadcast",
-                            topic: event.data.topic,
-                            message: msgPopped
-                        }); 
+                        command: "broadcast",
+                        topic: event.data.topic,
+                        message: msgPopped
+                    }); 
                 };
                 if (server !== null) { 
                     server.postMessage({
-                            command: "broadcast",
-                            topic: event.data.topic,
-                            message: msgPopped
-                        }); 
+                        command: "broadcast",
+                        topic: event.data.topic,
+                        message: msgPopped
+                    }); 
+                };
+                if (rclSubscriber !== null) {
+                    rclSubscriber.postMessage({
+                        command: "broadcast",
+                        topic: event.data.topic,
+                        message: msgPopped
+                    });
                 };
             } 
             
@@ -159,7 +168,7 @@ function startTalker() {
     document.getElementById("talkerOutput").innerHTML += "Publisher initializing.\n";
 
     if (talker === null) {
-        talker = new Worker("./thesis_src/rosWorkers//talker.js");
+        talker = new Worker("./thesis_src/rosWorkers/talker.js");
     }
 
     talker.onmessage = onMessageFromWorker;
@@ -187,7 +196,7 @@ function startListener() {
     document.getElementById("listenerOutput").innerHTML += "Subscriber initializing.\n";
 
     if (listener === null) {
-        listener = new Worker("./thesis_src/rosWorkers//listener.js");
+        listener = new Worker("./thesis_src/rosWorkers/listener.js");
     }
 
     listener.onmessage = onMessageFromWorker;
@@ -213,7 +222,7 @@ function startServer() {
     document.getElementById("serverOutput").innerHTML += "Server initializing.\n";
 
     if (server === null) {
-        server = new Worker("./thesis_src/rosWorkers//server.js");
+        server = new Worker("./thesis_src/rosWorkers/server.js");
     }
 
     server.onmessage = onMessageFromWorker;
@@ -241,7 +250,7 @@ function startClient() {
     document.getElementById("clientOutput").innerHTML += "Client initializing.\n";
 
     if (client === null) {
-        client = new Worker("./thesis_src/rosWorkers//client.js");
+        client = new Worker("./thesis_src/rosWorkers/client.js");
     }
 
     client.onmessage = onMessageFromWorker;
@@ -258,6 +267,78 @@ function stopClient() {
 function clearClient() {
     document.getElementById("clientOutput").innerHTML = "";
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// RCL Publisher ///////////////////////////////////////////////////////////////
+
+function startRCLPub() {
+
+    document.getElementById("rclpubOutput").innerHTML += "Publisher initializing.\n";
+
+    rclPublisher.onmessage = onMessageFromWorker;
+
+    let params = document.getElementById("publisherForm");
+
+    rclPublisher.postMessage({
+        command:  "initNode",
+        node:     params.elements[0].value,
+        topic:    params.elements[1].value,
+        message:  params.elements[2].value,
+        mseconds: isNaN(Number(params.elements[3].value)) 
+                  ? 1
+                  : Number(params.elements[3].value),
+    });
+}
+
+function stopRCLPub() {
+    if (rclPublisher !== null) {
+        rclPublisher.terminate();
+        rclPublisher = null;
+    }
+    document.getElementById("rclpubOutput").innerHTML += "Publisher terminated.\n\n";
+
+    rclPublisher = new Worker("./thesis_src/rosWorkers/rcl_publisher.js");
+}
+
+function clearRCLPub() {
+    document.getElementById("rclpubOutput").innerHTML = "";
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// RCL Subscriber ///////////////////////////////////////////////////////////////
+
+function startRCLSub() {
+
+    document.getElementById("rclsubOutput").innerHTML += "Subscriber initializing.\n";
+
+    rclSubscriber.onmessage = onMessageFromWorker;
+
+    let params = document.getElementById("subscriberForm");
+
+    rclSubscriber.postMessage({
+        command:  "initNode",
+        node:     params.elements[0].value,
+        topic:    params.elements[1].value,
+        message:  false,
+        mseconds: 0,
+    });
+}
+
+function stopRCLSub() {
+    if (rclSubscriber !== null) {
+        rclSubscriber.terminate();
+        rclSubscriber = null;
+    }
+    document.getElementById("rclsubOutput").innerHTML += "Subscriber terminated.\n\n";
+
+    rclSubscriber = new Worker("./thesis_src/rosWorkers/rcl_subscriber.js");
+}
+
+function clearRCLSub() {
+    document.getElementById("rclsubOutput").innerHTML = "";
+}
+
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // TOPICS //////////////////////////////////////////////////////////////////////
