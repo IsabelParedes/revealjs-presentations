@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+    <link rel="icon" type="image/x-icon" href="./thesis_src/images/favicon.svg">
+
     <title>ROS2WASM</title>
 
     <link href='https://fonts.googleapis.com/css?family=Bayon' rel='stylesheet'>
@@ -34,23 +36,26 @@
 
         <section>
             <h2>Contents</h2>
+            <div class="slideContent">
             <div class="two-col">
-            <div>
+            <div class="even-col">
                 <p><span class="contentMarker">1</span><b>Motivation</b></p>
                 <p><span class="contentMarker">2</span><b>Proposed Solution</b></p>
                 <p><span class="contentMarker">3</span><b>Concept Architecture</b></p>
                 <p><span class="contentMarker">4</span><b>Methodology</b></p>
             </div>
-            <div>
+            <div class="even-col">
                 <p><span class="contentMarker">5</span><b>Demonstrations</b></p>
                 <p><span class="contentMarker">6</span><b>Conclusion</b></p>
                 <p><span class="contentMarker">7</span><b>Future Work</b></p>
+            </div>
             </div>
             </div>
         </section>
 
         <section>
             <h2>Motivation</h2>
+            <div class="slideContent">
             <div class="two-col">
             <div class="text-col">
                 <p><b>ROS 2 Limitations:</b></p>
@@ -61,14 +66,36 @@
                     <li>Reproducibility</li>
                 </ul>
             </div>
-            <div>
+            <div class="img-col">
                 <img src="./thesis_src/images/confusion.svg">
+            </div>
+            </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Motivation</h2>
+            <div class="slideContent">
+            <div class="two-col">
+                <div class="text-col">
+                    <p><b>Target Scenario</b></p>
+                    <ul>
+                        <li>Robotics researcher</li>
+                        <li>Gait generation for a heptapod</li>
+                        <li>Simulation</li>
+                        <li>Shareable</li>
+                    </ul>
+                </div>
+                <div class="img-col">
+                    <img src="./thesis_src/images/scenario.svg">
+                </div>
             </div>
             </div>
         </section>
 
         <section>
             <h2>Existing Solutions</h2>
+            <div class="slideContent">
             <div class="deck">
                 <div class="card">
                     <img src="./thesis_src/images/HumbleHawksbill.png">
@@ -87,10 +114,12 @@
                     <p><b>Robot Web Tools</b></p>
                 </div>
             </div>
+            </div>
         </section>
 
         <section>
             <h2>Inspiration</h2>
+            <div class="slideContent">
             <div class="deck">
                 <div class="card">
                     <img class="img-border" src="./thesis_src/images/roswasm_webgui.png">
@@ -100,13 +129,13 @@
                     <img class="img-border" src="./thesis_src/images/rosonweb_gui.png">
                     <p><b>ROS On Web</b></p>
                 </div>
-
             </div>
-
+            </div>
         </section>
 
         <section>
             <h2>Proposed Solution</h2>
+            <div class="slideContent">
             <div class="two-col">
                 <div class="text-col">
                     <p><b>Running ROS 2 on the Browser</b></p>
@@ -120,56 +149,61 @@
                         <img src="./thesis_src/images/wasm.svg">
                         <b>WebAssembly</b>
                     </div>
-
                 </div>
-                <div>
+                <div class="img-col">
                     <img src="./thesis_src/images/browser.svg">
                 </div>
+            </div>
             </div>
         </section>
 
         <section>
             <h2>Target Users</h2>
+            <div class="slideContent">
             <div class="deck">
                 <div class="card">
-                    <img height="30%" src="./thesis_src/images/beginner.svg">
+                    <img src="./thesis_src/images/beginner.svg">
                     <p><span class="userMarker">U1</span><b>Beginner</b></p>
                 </div>
                 <div class="card">
-                    <img height="30%" src="./thesis_src/images/student.svg">
+                    <img src="./thesis_src/images/student.svg">
                     <p><span class="userMarker">U2</span><b>Student</b></p>
                 </div>
                 <div class="card">
-                    <img height="30%" src="./thesis_src/images/rosUser.svg">
+                    <img src="./thesis_src/images/rosUser.svg">
                     <p><span class="userMarker">U3</span><b>ROS User</b></p>
                 </div>
                 <div class="card">
-                    <img height="30%" src="./thesis_src/images/roboticist.svg">
+                    <img src="./thesis_src/images/roboticist.svg">
                     <p><span class="userMarker">U4</span><b>Roboticist</b></p>
                 </div>
+            </div>
             </div>
         </section>
 
         <section>
             <h2>User Interface Levels</h2>
+            <div class="slideContent">
             <div class="two-col">
-                <div>
+                <div class="text-col">
                     <p><span class="uiMarker">I1</span><b>Non-Interactive</b></p>
                     <p><span class="uiMarker">I2</span><b>Minimal</b></p>
                     <p><span class="uiMarker">I3</span><b>Basic</b></p>
                     <p><span class="uiMarker">I4</span><b>Intermediate</b></p>
                     <p><span class="uiMarker">I5</span><b>Advanced</b></p>
                 </div>
-                <div>
+                <div class="img-col">
                     <img src="./thesis_src/images/userInterface.svg">
                 </div>
+            </div>
             </div>
         </section>
 
         <section>
             <h2>Technical Complexity Levels</h2>
+            <div class="slideContent">
             <div class="two-col">
-                <div id="longList">
+                <div id="longList" class="text-col">
                     <p><span class="techMarker">C1</span><b>Middleware replacement</b></p>
                     <p><span class="techMarker">C2</span><b>Cross-compilation of 1 package</b></p>
                     <p><span class="techMarker">C3</span><b>Publisher and subscriber</b></p>
@@ -180,14 +214,16 @@
                     <p><span class="techMarker">C8</span><b>Simulation</b></p>
                     <p><span class="techMarker">C9</span><b>Development workspace</b></p>
                 </div>
-                <div>
+                <div class="img-col">
                     <img src="./thesis_src/images/complexity.svg">
                 </div>
+            </div>
             </div>
         </section>
 
         <section>
             <h2>ROS Middleware</h2>
+            <div class="slideContent">
             <div class="two-col">
                 <div class="text-col">
                     <p><b>Data Distribution Service for Real-Time Systems (DDS)</b></p>
@@ -198,78 +234,134 @@
                         <li>GurumDDS</li>
                     </ul>
                 </div>
-                <div>
+                <div class="img-col">
                     <img id="ddsImg" src="./thesis_src/images/dds.svg">
                 </div>
+            </div>
             </div>
         </section>
 
         
         <section>
             <h2>Custom Middleware</h2>
+            <div class="slideContent">
             <img src="./thesis_src/images/package.svg" id="packImg">
+            </div>
         </section>
 
         <section>
             <h2>Methodology</h2>
+            <div class="slideContent">
             <img src="./thesis_src/images/code.svg" id="methodImg">
+            </div>
         </section>
 
         <section>
             <h2>Demos</h2>
+            <div class="slideContent">
             <div class="two-col">
-                <div>
+                <div class="even-col">
                     <img src="./thesis_src/images/demo_qr.png" id="qr-code">
                     <p><a href="https://ihuicatl.github.io/reveal.js/presentations/thesis.html#/12">ihuicatl.github.io/reveal.js/presentations/thesis.html#/12</a></p>
                 </div>
-                <div>
-                    <!-- <img src="./thesis_src/images/robot-arm-animated.svg"> -->
+                <div class="even-col">
                     <object id="robotArm" type="image/svg+xml" data="./thesis_src/images/robot-arm-animated.svg"></object>
                 </div>
+            </div>
             </div>
         </section>
 
         <section>
             <h2>ROS Topics</h2>
+            <div class="slideContent">
+            <div class="demo-col">
+            <div class="demo-text">
 
-            <h3>Publisher</h3>
-            <div class="buttonBox">
-                <button onclick="startTalker()">START</button>
-                <button onclick="stopTalker()">STOP</button>
-                <button onclick="clearTalker()">CLEAR</button>
+                <h3>Publisher</h3>
+                <div class="demoBox">
+                    <div class="buttonBox">
+                        <button onclick="startTalker()">START</button>
+                        <button onclick="stopTalker()">STOP</button>
+                        <button onclick="clearTalker()">CLEAR</button>
+                    </div>
+                    <div class="outputBox">
+                        <textarea id="talkerOutput"  rows="8"></textarea>
+                    </div>
+                </div>
+
+                <p></p>
+
+                <h3>Subscriber</h3>
+                <div class="demoBox">
+                    <div class="buttonBox">
+                        <button onclick="startListener()">START</button>
+                        <button onclick="stopListener()">STOP</button>
+                        <button onclick="clearListener()">CLEAR</button>
+                    </div>      
+                    <div class="outputBox">
+                        <textarea id="listenerOutput"  rows="8"></textarea>
+                    </div>
+                </div>
+
             </div>
-            <textarea id="talkerOutput"  rows="8"></textarea>
 
-            <h3>Subscriber</h3>
-            <div class="buttonBox">
-                <button onclick="startListener()">START</button>
-                <button onclick="stopListener()">STOP</button>
-                <button onclick="clearListener()">CLEAR</button>
-            </div>      
-            <textarea id="listenerOutput"  rows="8"></textarea>
+            <div class="levelBox">
+                <p><span class="sMarker user">U2</span></p>
+                <p><span class="sMarker ui">I2</span></p>
+                <p><span class="sMarker tech">C2</span></p>
+            </div>
+            </div>
+        </div>
         </section>
 
         <section>
             <h2>ROS Services</h2>
-            <h3>Server</h3>
-            <div class="buttonBox">
-                <button onclick="startServer()">START</button>
-                <button onclick="stopServer()">STOP</button>
-                <button onclick="clearServer()">CLEAR</button>
-            </div>
-            <textarea id="serverOutput"  rows="8"></textarea>
+            <div class="slideContent">
+            <div class="demo-col">
+                <div class="demo-text">
+    
+                    <h3>Server</h3>
+                    <div class="demoBox">
+                        <div class="buttonBox">
+                            <button onclick="startServer()">START</button>
+                            <button onclick="stopServer()">STOP</button>
+                            <button onclick="clearServer()">CLEAR</button>
+                        </div>
+                        <div class="outputBox">
+                            <textarea id="serverOutput"  rows="8"></textarea>
+                        </div>
+                    </div>
 
-            <h3>Client</h3>
-            <div class="buttonBox">
-                <button onclick="startClient()">START</button>
-                <button onclick="stopClient()">STOP</button>
-                <button onclick="clearClient()">CLEAR</button>
-            </div>      
-            <textarea id="clientOutput"  rows="8"></textarea>
+                    <p></p>
+    
+                    <h3>Client</h3>
+                    <div class="demoBox">
+                        <div class="buttonBox">
+                            <button onclick="startClient()">START</button>
+                            <button onclick="stopClient()">STOP</button>
+                            <button onclick="clearClient()">CLEAR</button>
+                        </div>      
+                        <div class="outputBox">
+                            <textarea id="clientOutput"  rows="8"></textarea>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="levelBox">
+                    <p><span class="sMarker user">U2</span></p>
+                    <p><span class="sMarker ui">I2</span></p>
+                    <p><span class="sMarker tech">C2</span></p>
+                </div>
+            </div>
+            </div>
         </section>
 
         <section>
             <h2>ROS Client Libraries</h2>
+            <div class="slideContent">
+
+            </div>
         </section>
 
         <section>
@@ -279,8 +371,9 @@
 
         <section>
             <h2>Conclusion</h2>
+            <div class="slideContent">
             <div class="two-col">
-                <div class="text-col">
+                <div class="even-col">
                 <ul class="pros">
                     <li>No installation</li>
                     <li>Easy to use</li>
@@ -296,7 +389,7 @@
                     <li>Performance</li>
                 </ul>
                 </div>
-                <div class="text-col">
+                <div class="even-col">
                 <p>
                     <span class="sMarker user">U1</span>
                     <span class="sMarker user">U2</span>
@@ -323,10 +416,12 @@
                 </p>
                 </div>
             </div>
+            </div>
         </section>
 
         <section>
             <h2>Future Work</h2>
+            <div class="slideContent">
             <div class="two-col">
                 <div class="text-col">
                 <p><b>Client libraries:</b></p>
@@ -344,8 +439,7 @@
                     <li>Quality of Service (QoS)</li>
                 </ul>
                 </div>
-                <div id="jLite">
-                    <!-- <div class="frame"> -->
+                <div id="jLite" class="img-col">
                     <iframe 
                         id="frame"
                         height="100%"
@@ -353,8 +447,8 @@
                         src="https://jupyterlab-urdf.readthedocs.io/en/latest/lite/lab/index.html" 
                         title="JupyterLite">
                     </iframe>
-                    <!-- </div> -->
                 </div>
+            </div>
             </div>
         </section>
 
@@ -396,7 +490,7 @@
 </script>
 
 <div id="footer">
-    <div>
+    <div class="footer-text">
         <p>Cross-Compiling ROS 2 Humble to WebAssembly for the Development</p> 
         <p>of a Web Browser Supported Robotics Environment</p>
         <p>Isabel Paredes</p>
@@ -404,12 +498,12 @@
         <p>RWTH Aachen University</p>
     </div>
 
-    <div>
+    <div class="footer-logos">
+        <img src="./thesis_src/images/quantstack_logo.svg" alt="QuantStack Logo">
         <img src="./thesis_src/images/logo.png" alt="IGMR Logo">
     </div>
 
 </div>
 
-<!-- <script src="./thesis_src/rosWorkers/pubsub.js"></script> -->
 </body>
 </html>
