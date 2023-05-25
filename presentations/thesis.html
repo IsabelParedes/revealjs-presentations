@@ -88,10 +88,10 @@
                     <div>
                     <p><b>Target Scenario</b></p>
                     <ul>
-                        <li>Robotics researcher</li>
+                        <li>Robotics instructor</li>
                         <li>Gait generation for a heptapod</li>
                         <li>Simulation</li>
-                        <li>Shareable</li>
+                        <li>Shareable with students</li>
                     </ul>
                     </div>
                 </div>
@@ -203,6 +203,7 @@
                     <p><span class="uiMarker">I3</span><b>Basic</b></p>
                     <p><span class="uiMarker">I4</span><b>Intermediate</b></p>
                     <p><span class="uiMarker">I5</span><b>Advanced</b></p>
+                    <p><span class="uiMarker">I6</span><b>Complete</b></p>
                     </div>
                 </div>
                 <div class="img-col">
@@ -415,9 +416,9 @@
             </div>
 
             <div class="levelBox">
-                <p><span class="sMarker user">U2</span></p>
-                <p><span class="sMarker ui">I2</span></p>
-                <p><span class="sMarker tech">C2</span></p>
+                <p><span class="sMarker user">U1</span></p>
+                <p><span class="sMarker ui">I3</span></p>
+                <p><span class="sMarker tech">C3</span></p>
             </div>
             </div>
         </div>
@@ -458,9 +459,9 @@
                 </div>
     
                 <div class="levelBox">
-                    <p><span class="sMarker user">U2</span></p>
-                    <p><span class="sMarker ui">I2</span></p>
-                    <p><span class="sMarker tech">C2</span></p>
+                    <p><span class="sMarker user">U1</span></p>
+                    <p><span class="sMarker ui">I4</span></p>
+                    <p><span class="sMarker tech">C4</span></p>
                 </div>
             </div>
             </div>
@@ -469,29 +470,37 @@
         <section>
             <h2>LEGO-BOOST Vernie</h2>
             <div class="slideContent">
-                <div id="vernieCol">
-                <div id="vernieConnect">
-                    <button onclick="connect(); happyVernie();">CONNECT</button>
-                    <img id="vernie-head" 
-                        src="./thesis_src/images/vernie_angry.svg"
-                        alt="Vernie's head">
-                    <button onclick="disconnect(); angryVernie();">DISCONNECT</button>
+                <div class="demo-col">
+                <div class="demo-text">
+                    <div id="vernieConnect">
+                        <button onclick="connect(); happyVernie();">CONNECT</button>
+                        <img id="vernie-head" 
+                            src="./thesis_src/images/vernie_angry.svg"
+                            alt="Vernie's head">
+                        <button onclick="disconnect(); angryVernie();">DISCONNECT</button>
+                    </div>
+                
+                    <h3>Publish LED colors</h3>
+                    <div class="demoBox">
+                    <div class="buttonBox" id="vernieButtons">
+                        <svg width = "1em" height="1em">
+                            <circle id="ledCircle" cx="0.5em" cy="0.5em" r="0.5em" fill="black"/>
+                        </svg>
+                        <button onclick="startVernieLED()">START</button>
+                        <button onclick="stopVernieLED()">STOP</button>
+                        <button onclick="clearVernieLED()">CLEAR</button>
+                    </div>    
+                    <textarea id="vernieOutput"  rows="8"></textarea>    
+                    </div>
                 </div>
-    
-                <h3>Publish LED colors</h3>
-                <div class="demoBox">
-                <div class="buttonBox" id="vernieButtons">
-                    <svg width = "1em" height="1em">
-                        <circle id="ledCircle" cx="0.5em" cy="0.5em" r="0.5em" fill="black"/>
-                    </svg>
-                    <button onclick="startVernieLED()">START</button>
-                    <button onclick="stopVernieLED()">STOP</button>
-                    <button onclick="clearVernieLED()">CLEAR</button>
-                </div>    
-                <textarea id="vernieOutput"  rows="8"></textarea>    
+                <div class="levelBox">
+                    <p><span class="sMarker user">U2</span></p>
+                    <p><span class="sMarker ui">I4</span></p>
+                    <p><span class="sMarker tech">C5</span></p>
+                </div>
                 </div>
             </div>
-            </div>
+            
         </section>
 
         <section>
@@ -544,8 +553,8 @@
     
                 <div class="levelBox">
                     <p><span class="sMarker user">U2</span></p>
-                    <p><span class="sMarker ui">I2</span></p>
-                    <p><span class="sMarker tech">C2</span></p>
+                    <p><span class="sMarker ui">I4</span></p>
+                    <p><span class="sMarker tech">C5</span></p>
                 </div>
                 </div>
             </div>
@@ -580,14 +589,15 @@
                         <span class="sMarker user">U1</span>
                         <span class="sMarker user">U2</span>
                         <span class="sMarker">U3</span>
-                        <span class="sMarker">U4</span>
+                        <span class="sMarker target">U4</span>
                     </p>
                     <p>
                         <span class="sMarker ui">I1</span>
                         <span class="sMarker ui">I2</span>
                         <span class="sMarker ui">I3</span>
                         <span class="sMarker ui">I4</span>
-                        <span class="sMarker">I5</span>
+                        <span class="sMarker target">I5</span>
+                        <span class="sMarker">I6</span>
                     </p>
                     <p>
                         <span class="sMarker tech">C1</span>
@@ -597,7 +607,7 @@
                         <span class="sMarker tech">C5</span>
                         <span class="sMarker">C6</span>
                         <span class="sMarker">C7</span>
-                        <span class="sMarker">C8</span>
+                        <span class="sMarker target">C8</span>
                         <span class="sMarker">C9</span>
                     </p>
                     </div>
@@ -626,6 +636,7 @@
                         <li>Action services</li>
                         <li>Quality of Service (QoS)</li>
                     </ul>
+                    <p><b>ROSCon 2023</b></p>
                     </div>
                 </div>
                 <div id="jLite" class="img-col">

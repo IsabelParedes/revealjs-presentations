@@ -593,6 +593,10 @@
   background: var(--col-accent-05);
 }
 
+.sMarker.target {
+  color: var(--col-foreground);
+}
+
 .uiMarker {
   background: var(--col-accent-03);
   margin-left: var(--side-margin);
@@ -657,10 +661,12 @@
 }
 
 #frame {
-  transform: scale(1.5);
+  /* transform: scale(1.5); */
   transform-origin: top left;
-  height: 40vh;
-  width: 35vw;
+  /* height: 40vh; */
+  height: 65vh;
+  /* width: 35vw; */
+  width: 55vw;
   background: var(--col-foreground);
   margin: 1em 0 0 0;
   padding-left: 0;
@@ -866,6 +872,9 @@ textarea {
   display: flex;
   flex-direction: column;
   font-size: 0.8em;
+  width: 60%;
+  box-sizing: border-box;
+  padding-left: var(--side-margin);
 }
 
 #questionText p {
