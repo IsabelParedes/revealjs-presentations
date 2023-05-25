@@ -31,7 +31,7 @@ Move demos after conclusion but before future work
 
 ## UI
 - **Non-interactive.** obvious
-- **Minimal.** start/stop nodes
+- **Minimal.** start/stop node
 - **Basic.** publisher and subscriber
 - **Intermediate.** topics, services, request evn info
 - **Advanced.** full control, modify parameters, bag files, visualizations
