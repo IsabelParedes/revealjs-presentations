@@ -1,0 +1,747 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="icon" type="image/x-icon" href="./thesis_src/images/favicon.svg">
+
+    <title>ROS2WASM</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Bayon' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Konkhmer Sleokchher' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
+
+    <link rel="stylesheet" href="../dist/reset.css">
+    <link rel="stylesheet" href="../dist/reveal.css">
+    <link rel="stylesheet" href="../dist/theme/igmr.css">
+
+    <!-- 15 MINUTES -->
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="../plugin/highlight/monokai.css">
+</head>
+<body>
+    <script src="./thesis_src/rosWorkers/rosMain.js"></script>
+    <script src="./thesis_src/dist/bundle.js"></script>
+
+    <div class="reveal">
+    <div class="slides">
+
+        <section data-background="./thesis_src/images/superC.jpg" data-background-repeat="no repeat">
+            <div id="title">
+            <h1>Cross-Compiling ROS 2 Humble to WebAssembly for the Development of a Web Browser Supported Robotics Environment</h1>
+            <h3 id="author">Isabel Paredes</h3>
+            </div>
+        </section>
+
+        <section>
+            <h2>Contents</h2>
+            <div class="slideContent">
+            <div class="two-col">
+            <div class="even-col">
+                <div>
+                <p><span class="contentMarker">1</span><b>Motivation</b></p>
+                <p><span class="contentMarker">2</span><b>Proposed Solution</b></p>
+                <p><span class="contentMarker">3</span><b>Concept Architecture</b></p>
+                <p><span class="contentMarker">4</span><b>Methodology</b></p>
+                </div>
+            </div>
+            <div class="even-col">
+                <div>
+                <p><span class="contentMarker">5</span><b>Demonstrations</b></p>
+                <p><span class="contentMarker">6</span><b>Conclusion</b></p>
+                <p><span class="contentMarker">7</span><b>Future Work</b></p>
+                </div>
+            </div>
+            </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Motivation</h2>
+            <div class="slideContent">
+            <div class="two-col">
+            <div class="text-col">
+                <div>
+                <p><b>ROS 2 Limitations:</b></p>
+                <ul>
+                    <li>Initial setup</li>
+                    <li>Ease of use</li>
+                    <li>Accessibility</li>
+                    <li>Reproducibility</li>
+                </ul>
+                </div>
+            </div>
+            <div class="img-col">
+                <img src="./thesis_src/images/confusion.svg">
+            </div>
+            </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Motivation</h2>
+            <div class="slideContent">
+            <div class="two-col">
+                <div class="text-col">
+                    <div>
+                    <p><b>Target Scenario</b></p>
+                    <ul>
+                        <li>Robotics instructor</li>
+                        <li>Gait generation for a heptapod</li>
+                        <li>Simulation</li>
+                        <li>Shareable with students</li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="img-col">
+                    <img src="./thesis_src/images/scenario.svg">
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Existing Solutions</h2>
+            <div class="slideContent">
+            <div class="deck">
+                <div class="card">
+                    <img src="./thesis_src/images/HumbleHawksbill.png">
+                    <p><b>ROS 2</b></p>
+                </div>
+                <div class="card">
+                    <img src="./thesis_src/images/robostack.svg">
+                    <p id="humble"><b>RoboStack</b></p>
+                </div>
+                <div class="card">
+                    <img src="./thesis_src/images/docker.png">
+                    <p><b>Docker</b></p>
+                </div>
+                <div class="card">
+                    <img src="./thesis_src/images/robotwebtools.jpg">
+                    <p><b>Robot Web Tools</b></p>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Inspiration</h2>
+            <div class="slideContent">
+            <div class="deck">
+                <div class="card">
+                    <img class="img-border" src="./thesis_src/images/roswasm_webgui.png">
+                    <p><b>roswasm_suite</b></p>
+                </div>
+                <div class="card">
+                    <img class="img-border" src="./thesis_src/images/rosonweb_gui.png">
+                    <p><b>ROS On Web</b></p>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Proposed Solution</h2>
+            <div class="slideContent">
+            <div class="two-col">
+                <div class="text-col">
+                    <div>
+                    <p><b>Running ROS 2 on the Browser</b></p>
+                    <ul>
+                        <li>Hassle-free setup</li>
+                        <li>Zero background knowledge</li>
+                        <li>Fully open-source</li>
+                    </ul>
+    
+                    <div class="h-card">
+                        <img src="./thesis_src/images/wasm.svg">
+                        <b>WebAssembly</b>
+                    </div>
+                    </div>
+                </div>
+                <div class="img-col">
+                    <img src="./thesis_src/images/browser.svg">
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Target Users</h2>
+            <div class="slideContent">
+            <div class="deck">
+                <div class="card">
+                    <img src="./thesis_src/images/beginner.svg">
+                    <p><span class="userMarker">U1</span><b>Beginner</b></p>
+                </div>
+                <div class="card">
+                    <img src="./thesis_src/images/student.svg">
+                    <p><span class="userMarker">U2</span><b>Student</b></p>
+                </div>
+                <div class="card">
+                    <img src="./thesis_src/images/rosUser.svg">
+                    <p><span class="userMarker">U3</span><b>ROS User</b></p>
+                </div>
+                <div class="card">
+                    <img src="./thesis_src/images/roboticist.svg">
+                    <p><span class="userMarker">U4</span><b>Roboticist</b></p>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>User Interface Levels</h2>
+            <div class="slideContent">
+            <div class="two-col">
+                <div class="text-col">
+                    <div>
+                    <p><span class="uiMarker">I1</span><b>Non-Interactive</b></p>
+                    <p><span class="uiMarker">I2</span><b>Minimal</b></p>
+                    <p><span class="uiMarker">I3</span><b>Basic</b></p>
+                    <p><span class="uiMarker">I4</span><b>Intermediate</b></p>
+                    <p><span class="uiMarker">I5</span><b>Advanced</b></p>
+                    <p><span class="uiMarker">I6</span><b>Complete</b></p>
+                    </div>
+                </div>
+                <div class="img-col">
+                    <img src="./thesis_src/images/userInterface.svg">
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Technical Complexity Levels</h2>
+            <div class="slideContent">
+            <div class="two-col">
+                <div class="text-col">
+                    <div id="longList">
+                    <p><span class="techMarker">C1</span><b>Middleware replacement</b></p>
+                    <p><span class="techMarker">C2</span><b>Cross-compilation of 1 package</b></p>
+                    <p><span class="techMarker">C3</span><b>Publisher and subscriber</b></p>
+                    <p><span class="techMarker">C4</span><b>Multiple nodes</b></p>
+                    <p><span class="techMarker">C5</span><b>Robot manipulation</b></p>
+                    <p><span class="techMarker">C6</span><b>ROS client libraries in JupyterLite</b></p>
+                    <p><span class="techMarker">C7</span><b>Robot visualization</b></p>
+                    <p><span class="techMarker">C8</span><b>Simulation</b></p>
+                    <p><span class="techMarker">C9</span><b>Development workspace</b></p>
+                    </div>
+                </div>
+                <div class="img-col">
+                    <img src="./thesis_src/images/complexity.svg">
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>ROS Middleware</h2>
+            <div class="slideContent">
+            <div class="two-col">
+                <div class="text-col">
+                    <div>
+                    <p><b>Data Distribution Service for Real-Time Systems (DDS)</b></p>
+                    <ul>
+                        <li>eProsima Fast DDS</li>
+                        <li>Eclipse Cyclone DDS</li>
+                        <li>RTI Connext DDS</li>
+                        <li>GurumDDS</li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="img-col">
+                    <img id="ddsImg" src="./thesis_src/images/dds.svg">
+                </div>
+            </div>
+            </div>
+        </section>
+
+        
+        <section>
+            <h2>Custom Middleware</h2>
+            <div class="slideContent">
+            <img src="./thesis_src/images/package.svg" id="packImg">
+            </div>
+        </section>
+
+        <section>
+            <h2>Methodology</h2>
+            <div class="slideContent">
+            <img src="./thesis_src/images/code.svg" id="methodImg">
+            </div>
+        </section>
+
+        <section>
+            <h2>Methodology</h2>
+            <div class="slideContent">
+            <div class="two-col">
+                <div id="code-col">
+                    <p><a href="https://github.com/ihuicatl/ros2wasm">github.com/ihuicatl/ros2wasm</a></p>
+                    <pre id="workflow"><code data-trim data-noescape>
+                        name: build-package
+                        on:
+                        workflow_dispatch:
+                            inputs:
+                            package:
+                                description: 'Target package'
+                                type: string
+                                default: 'test_pubsub'
+                                required: true
+                            debug_mode:
+                                description: 'Debug mode'
+                                type: boolean
+                                default: false
+                        run-name: Build up to package ${{ inputs.package }}
+
+
+                        jobs:
+                        setup:
+                            runs-on: ubuntu-latest
+                            env:
+                            TARGET_PLATFORM: emscripten-32
+                            RMW_IMPLEMENTATION: rmw_wasm
+                            ROS_VERSION: 2
+                            ROS_DISTRO: humble
+
+                            steps:
+
+                            - name: Setup emsdk
+                            uses: mymindstorm/setup-emsdk@v11
+                            with:
+                                version: 3.1.27
+                            
+                            - name: Verify emsdk
+                            run: |
+                                emcc -v
+                                find $EMSDK -iname "upstream"
+                                echo "Find upstream"
+
+                            - name: Create ROS2 workspace
+                            run: mkdir -p ros_workspace/src
+
+                            - name: Install rmw_wasm
+                            uses: actions/checkout@v3
+                            with:
+                                path: ros_workspace/src/myrepo
+
+                            - name: Copy ROS2 packages
+                            run:  |
+                                curl -s https://packagecloud.io/install/repositories/dirk-thomas/vcstool/script.deb.sh | sudo bash
+                                sudo apt-get update
+                                sudo apt-get install python3-vcstool
+                                vcs import --input https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos ros_workspace/src
+                                vcs import --input ros_workspace/src/myrepo/src/repos.yaml ros_workspace/src
+
+                            - name: Remove unsupported packages
+                            run: |
+                                cd ros_workspace/src
+                                while read F; do rm -rf $F; done < myrepo/src/unsupported.txt
+
+                            - name: Apply patches
+                            run: |
+                                cd ros_workspace/src/ros2/rcutils
+                                git apply ${GITHUB_WORKSPACE}/ros_workspace/src/myrepo/src/rcutils.patch
+
+                            - name: Create environment
+                            uses: mamba-org/provision-with-micromamba@main
+                            with:
+                                environment-file: ros_workspace/src/myrepo/src/env.yaml
+                                environment-name: ros-env
+                                micromamba-version: '1.4.1'
+                            
+                            - name: Activate environment and build package
+                            run: |
+                                eval "$(micromamba shell hook --shell=bash)"
+                                micromamba activate ros-env
+                                cd ros_workspace
+                                if [${{ inputs.debug }}]; then ./src/myrepo/src/blasm.sh -d -v -u ${{ inputs.package }}; else ./src/myrepo/src/blasm.sh -u ${{ inputs.package }}; fi
+
+                            - name: Upload artifacts
+                            uses: actions/upload-artifact@v3
+                            with:
+                                name: ${{ inputs.package }}-artifacts
+                                path: |
+                                ros_workspace/build/${{ inputs.package }}/*.js
+                                ros_workspace/build/${{ inputs.package }}/*.wasm
+                                ros_workspace/build/${{ inputs.package }}/*.html
+                            
+                    </code></pre>
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
+        </section>
+
+        <section data-background="./thesis_src/images/terminator.jpg">
+            <h1 id="demoTitle">DEMOS</h1>
+        </section>
+
+        <section>
+            <h2>ROS Topics</h2>
+            <div class="slideContent">
+            <div class="demo-col">
+            <div class="demo-text">
+
+                <h3>Publisher</h3>
+                <div class="demoBox">
+                    <div class="buttonBox">
+                        <button class="startBtn" onclick="startTalker()">START</button>
+                        <button class="stopBtn" onclick="stopTalker()">STOP</button>
+                        <button class="clearBtn" onclick="clearTalker()">CLEAR</button>
+                    </div>
+                    <div class="outputBox">
+                        <textarea id="talkerOutput"  rows="8"></textarea>
+                    </div>
+                </div>
+
+                <p></p>
+
+                <h3>Subscriber</h3>
+                <div class="demoBox">
+                    <div class="buttonBox">
+                        <button class="startBtn" onclick="startListener()">START</button>
+                        <button class="stopBtn" onclick="stopListener()">STOP</button>
+                        <button class="clearBtn" onclick="clearListener()">CLEAR</button>
+                    </div>      
+                    <div class="outputBox">
+                        <textarea id="listenerOutput"  rows="8"></textarea>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="levelBox">
+                <p><span class="sMarker user">U1</span></p>
+                <p><span class="sMarker ui">I3</span></p>
+                <p><span class="sMarker tech">C3</span></p>
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <section>
+            <h2>ROS Services</h2>
+            <div class="slideContent">
+            <div class="demo-col">
+                <div class="demo-text">
+    
+                    <h3>Server</h3>
+                    <div class="demoBox">
+                        <div class="buttonBox">
+                            <button class="startBtn" onclick="startServer()">START</button>
+                            <button class="stopBtn" onclick="stopServer()">STOP</button>
+                            <button class="clearBtn" onclick="clearServer()">CLEAR</button>
+                        </div>
+                        <div class="outputBox">
+                            <textarea id="serverOutput"  rows="8"></textarea>
+                        </div>
+                    </div>
+
+                    <p></p>
+    
+                    <h3>Client</h3>
+                    <div class="demoBox">
+                        <div class="buttonBox">
+                            <button class="startBtn" onclick="startClient()">START</button>
+                            <button class="stopBtn" onclick="stopClient()">STOP</button>
+                            <button class="clearBtn" onclick="clearClient()">CLEAR</button>
+                        </div>      
+                        <div class="outputBox">
+                            <textarea id="clientOutput"  rows="8"></textarea>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="levelBox">
+                    <p><span class="sMarker user">U1</span></p>
+                    <p><span class="sMarker ui">I4</span></p>
+                    <p><span class="sMarker tech">C4</span></p>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>LEGO-BOOST Vernie</h2>
+            <div class="slideContent">
+                <div class="demo-col">
+                <div class="demo-text">
+                    <div id="vernieConnect">
+                        <button onclick="connect(); happyVernie();">CONNECT</button>
+                        <img id="vernie-head" 
+                            src="./thesis_src/images/vernie_angry.svg"
+                            alt="Vernie's head">
+                        <button onclick="disconnect(); angryVernie();">DISCONNECT</button>
+                    </div>
+                
+                    <h3>Publish LED colors</h3>
+                    <div class="demoBox">
+                    <div class="buttonBox" id="vernieButtons">
+                        <svg width = "1em" height="1em">
+                            <circle id="ledCircle" cx="0.5em" cy="0.5em" r="0.5em" fill="black"/>
+                        </svg>
+                        <button onclick="startVernieLED()">START</button>
+                        <button onclick="stopVernieLED()">STOP</button>
+                        <button onclick="clearVernieLED()">CLEAR</button>
+                    </div>    
+                    <textarea id="vernieOutput"  rows="8"></textarea>    
+                    </div>
+                </div>
+                <div class="levelBox">
+                    <p><span class="sMarker user">U2</span></p>
+                    <p><span class="sMarker ui">I4</span></p>
+                    <p><span class="sMarker tech">C5</span></p>
+                </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <section>
+            <h2>ROS Client Libraries: <code>rclcpp</code></h2>
+            <div class="slideContent">
+                <div class="demo-col">
+                <div class="demo-text">
+    
+                    <h3>Publisher</h3>
+                    <div class="demoBox">
+                        <div class="inputRcl">
+                            <form id="publisherForm">
+                                <input type="text" name="rosnodeName" value="nodeName"><br>
+                                <input type="text" name="topicName" value="topicName"><br>
+                                <input type="text" name="message" value="messageString"><br>
+                                <input type="text" name="mseconds" value="timeSeconds">
+                            </form>
+                        </div>
+                        <div class="buttonRcl">
+                            <button class="startBtn" onclick="startRCLPub()">START</button>
+                            <button class="stopBtn" onclick="stopRCLPub()">STOP</button>
+                            <button class="clearBtn" onclick="clearRCLPub()">CLEAR</button>
+                        </div>
+                        <div class="outputRcl">
+                            <textarea id="rclpubOutput"  rows="8"></textarea>
+                        </div>
+                    </div>
+    
+                    <p></p>
+    
+                    <h3>Subscriber</h3>
+                    <div class="demoBox">
+                        <div class="inputRcl">
+                            <form id="subscriberForm">
+                                <input type="text" name="rosnodeName" value="nodeName"><br>
+                                <input type="text" name="topicName" value="topicName"><br>
+                            </form>
+                        </div>
+                        <div class="buttonRcl">
+                            <button class="startBtn" onclick="startRCLSub()">START</button>
+                            <button class="stopBtn" onclick="stopRCLSub()">STOP</button>
+                            <button class="clearBtn" onclick="clearRCLSub()">CLEAR</button>
+                        </div>
+                        <div class="outputRcl">
+                            <textarea id="rclsubOutput"  rows="8"></textarea>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="levelBox">
+                    <p><span class="sMarker user">U2</span></p>
+                    <p><span class="sMarker ui">I4</span></p>
+                    <p><span class="sMarker tech">C5</span></p>
+                </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section>
+            <h2>Conclusion</h2>
+            <div class="slideContent">
+            <div class="two-col">
+                <div class="even-col">
+                    <div id="procon">
+                    <ul class="pros">
+                        <li>No installation</li>
+                        <li>Easy to use</li>
+                        <li>Publicly accessible</li>
+                        <li>Reproducible</li>
+                        <li>OS agnostic</li>
+                        <li>No rosbridge required</li>
+                    </ul>
+                    <br><br>
+                    <ul class="cons">
+                        <li>Maintenance</li>
+                        <li>Missing features</li>
+                        <li>Performance</li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="even-col">
+                    <div>
+                    <p>
+                        <span class="sMarker user">U1</span>
+                        <span class="sMarker user">U2</span>
+                        <span class="sMarker">U3</span>
+                        <span class="sMarker target">U4</span>
+                    </p>
+                    <p>
+                        <span class="sMarker ui">I1</span>
+                        <span class="sMarker ui">I2</span>
+                        <span class="sMarker ui">I3</span>
+                        <span class="sMarker ui">I4</span>
+                        <span class="sMarker target">I5</span>
+                        <span class="sMarker">I6</span>
+                    </p>
+                    <p>
+                        <span class="sMarker tech">C1</span>
+                        <span class="sMarker tech">C2</span>
+                        <span class="sMarker tech">C3</span>
+                        <span class="sMarker tech">C4</span>
+                        <span class="sMarker tech">C5</span>
+                        <span class="sMarker">C6</span>
+                        <span class="sMarker">C7</span>
+                        <span class="sMarker target">C8</span>
+                        <span class="sMarker">C9</span>
+                    </p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Future Work</h2>
+            <div class="slideContent">
+            <div class="two-col">
+                <div class="text-col">
+                    <div>
+                    <p><b>Client libraries:</b></p>
+                    <ul>
+                        <li><code>rclpy</code></li>
+                    </ul>
+                    <p><b>User interface:</b></p>
+                    <ul>
+                        <li>JupyterLite</li>
+                        <li>Amphion and Zethus</li>
+                    </ul>
+                    <p><b>Middleware:</b></p>
+                    <ul>
+                        <li>Action services</li>
+                        <li>Quality of Service (QoS)</li>
+                    </ul>
+                    <p><b>ROSCon 2023</b></p>
+                    </div>
+                </div>
+                <div id="jLite" class="img-col">
+                    <iframe 
+                        id="frame"
+                        height="100%"
+                        width="100%"
+                        src="https://jupyterlab-urdf.readthedocs.io/en/latest/lite/lab/index.html" 
+                        title="JupyterLite">
+                    </iframe>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section data-background="./thesis_src/images/eve_robot.jpg">
+            <div id="thanks"><h1>Thank</h1><h1>You!</h1><div>
+        </section>
+
+        <section>
+            <h2>Questions<code>?</code></h2>
+            <div class="slideContent">
+            <div class="two-col">
+                <div class="text-col" id="questionText">
+                    <p><b>Special Thanks to</b></p>
+                    <ul>
+                        <li>M.Sc. Wolf Vollprecht</li>
+                        <li>M.Sc. Markus Schmitz</li>
+                    </ul>
+                    <p><b>Resources</b></p>
+                        <ul>
+                            <li><a href="https://ros2wasm.dev/">ros2wasm.dev</a></li>
+                            <li><a href="https://github.com/ihuicatl/rmw_wasm/">github.com/ihuicatl/rmw_wasm</a></li>
+                            <li><a href="https://github.com/ihuicatl/ros2wasm">github.com/ihuicatl/ros2wasm</a></li>
+                        </ul>
+                    <p><b>Slides</b></p>
+                    <ul>
+                        <li><a href="https://ihuicatl.github.io/reveal.js/presentations/thesis.html">ihuicatl.github.io/reveal.js/presentations/thesis.html</a></li>
+                    </ul>
+                    <img src="./thesis_src/images/qr_slides.png" id="qr-code">
+                    <p><b>Credits</b></p>
+                    <ul>
+                        <li>Illustrations by <a href="https://storyset.com/people">Storyset</a></li>
+                    </ul>
+                    <p><b>Contact</b></p>
+                    <ul>
+                        <li><a href="mailto:isabel.paredes@quantstack.net">isabel.paredes@quantstack.net</a></li>
+                    </ul>
+                    
+                </div>
+                <div class="img-col">
+                    <object id="robotArm" type="image/svg+xml" data="./thesis_src/images/robot-arm-animated.svg"></object>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        
+
+    </div>
+</div>
+
+<script src="../dist/reveal.js"></script>
+<script src="../plugin/notes/notes.js"></script>
+<script src="../plugin/markdown/markdown.js"></script>
+<script src="../plugin/highlight/highlight.js"></script>
+<script src="../plugin/math/math.js"></script>
+<script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+        hash: true,
+        width: 1400,
+        height: 700,
+        // margin: 0.5,
+        maxScale: 1.0,
+        slideNumber: 'c/t',
+        progress: true,
+
+        // Vertically
+        center: false,
+
+        disableLayout: true,
+
+        navigationMode: 'grid',
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+    });
+</script>
+
+<div id="footer">
+    <div class="footer-text">
+        <p>Cross-Compiling ROS 2 Humble to WebAssembly for the Development of a Web Browser Supported Robotics Environment</p>
+        <p>Isabel Paredes</p>
+        <p>Institute of Mechanism Theory, Machine Dynamics and Robotics</p>
+        <p>RWTH Aachen University</p>
+    </div>
+
+    <div class="footer-logos">
+        <img src="./thesis_src/images/logos.svg" alt="QuantStack and IGMR logos">
+    </div>
+
+</div>
+
+</body>
+</html>
